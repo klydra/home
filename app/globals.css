@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: "Command";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/command.ttf");
+}
+
+@font-face {
+  font-family: "Command";
+  font-style: bold;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/command-bold.ttf");
+}
+
+@font-face {
+  font-family: "Command";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/command-italic.ttf");
+}
+
+@keyframes banner {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(calc(2 / 3 * -100%));
+  }
+}
