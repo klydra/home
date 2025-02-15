@@ -58,7 +58,7 @@ export function Split({ children }: { children: SplitOption[] }) {
         className={twMerge(
           selected?.information
             ? "flex-[3] lg:border-l-2 lg:border-t-0 border-t-2 lg:border-primary p-4 "
-            : "w-0 opacity-0",
+            : "lg:w-0 lg:h-auto w-auto h-0 opacity-0",
           "transition-all motion-reduce:transition-none"
         )}
       >
