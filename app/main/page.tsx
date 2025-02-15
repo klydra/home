@@ -6,7 +6,17 @@ export default function Page() {
       {[
         {
           title: "Info 2",
-          information: <div>This is info 2</div>,
+          information: (
+            <div>
+              <img
+                src="/assets/technologies/ag.png"
+                style={{
+                  imageRendering: "pixelated",
+                  width: "1024px",
+                }}
+              />
+            </div>
+          ),
         },
         {
           title: "Uptime",

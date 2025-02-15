@@ -1,7 +1,7 @@
 "use client";
 
 import { SCALE_CH_PX } from "@/app/layout";
-import { ContentPages } from "@/content/pages";
+import { contentPages } from "@/content/pages";
 import { usePathname, useRouter } from "next/navigation";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
@@ -67,7 +67,7 @@ export function Banner() {
       <div className="h-6 w-full"></div>
       <div className="px-2 w-full overflow-hidden">
         <div className="flex gap-8 overflow-auto">
-          {ContentPages.map((page) => {
+          {contentPages.map((page) => {
             const selected = pathname.startsWith(`/${page.id}`);
             const ref = useRef<HTMLButtonElement>(null);
 

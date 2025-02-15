@@ -1,4 +1,9 @@
-export const ContentPages = [
+type ContentPage = {
+  id: string;
+  title: string;
+};
+
+export const contentPages = [
   {
     id: "main",
     title: "Main",
@@ -7,4 +12,4 @@ export const ContentPages = [
     id: "projects",
     title: "Projects",
   },
-] as const;
+] as const satisfies ContentPage[];

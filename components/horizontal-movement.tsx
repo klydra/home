@@ -1,13 +1,13 @@
 "use client";
 
-import { ContentPages } from "@/content/pages";
+import { contentPages } from "@/content/pages";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export function HorizontalMovementProvider() {
   const pathname = usePathname();
   const router = useRouter();
-  const page = ContentPages.findIndex((page) =>
+  const page = contentPages.findIndex((page) =>
     pathname.startsWith(`/${page.id}`)
   );
 
@@ -18,14 +18,14 @@ export function HorizontalMovementProvider() {
       switch (e.key) {
         case "ArrowLeft":
           if (page === 0)
-            router.push(`/${ContentPages[ContentPages.length - 1].id}`);
-          else router.push(`/${ContentPages[page - 1].id}`);
+            router.push(`/${contentPages[contentPages.length - 1].id}`);
+          else router.push(`/${contentPages[page - 1].id}`);
           break;
 
         case "ArrowRight":
-          if (page === ContentPages.length - 1)
-            router.push(`/${ContentPages[0].id}`);
-          else router.push(`/${ContentPages[page + 1].id}`);
+          if (page === contentPages.length - 1)
+            router.push(`/${contentPages[0].id}`);
+          else router.push(`/${contentPages[page + 1].id}`);
           break;
       }
     }

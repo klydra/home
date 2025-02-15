@@ -1,6 +1,6 @@
-import { ContentPages } from "@/content/pages";
+import { contentPages } from "@/content/pages";
 import { redirect } from "next/navigation";
 
 export default function Home() {
-  redirect(`/${ContentPages[0].id}`);
+  redirect(`/${contentPages[0].id}`);
 }
