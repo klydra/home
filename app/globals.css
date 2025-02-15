@@ -3,52 +3,38 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --primary: 240, 240, 240;
+  --secondary: 0, 0, 0;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--primary));
+  background: rgb(var(--secondary));
+  font-family: "IBM";
 }
 
 @font-face {
-  font-family: "Command";
+  font-family: "IBM";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("/command.ttf");
-}
-
-@font-face {
-  font-family: "Command";
-  font-style: bold;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/command-bold.ttf");
-}
-
-@font-face {
-  font-family: "Command";
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/command-italic.ttf");
+  src: url("/ibm.woff") format("woff");
 }
 
 @keyframes banner {
   0% {
-    transform: translate(0);
+    background-color: rgba(var(--secondary), 0);
+  }
+  30% {
+    background-color: rgba(var(--secondary), 1);
+  }
+  50% {
+    background-color: rgba(var(--secondary), 1);
+  }
+  80% {
+    background-color: rgba(var(--secondary), 0);
   }
   100% {
-    transform: translate(calc(2 / 3 * -100%));
+    background-color: rgba(var(--secondary), 0);
   }
 }

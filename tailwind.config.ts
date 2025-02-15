@@ -9,12 +9,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "black",
-        secondary: "white",
+        primary: "rgb(var(--primary))",
+        secondary: "rgb(var(--secondary))",
       },
     },
     fontFamily: {
-      command: ["Command"],
+      command: ["IBM"],
     },
   },
   plugins: [],

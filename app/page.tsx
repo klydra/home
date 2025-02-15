@@ -1,5 +1,6 @@
-import Image from "next/image";
+import { ContentPages } from "@/content/pages";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <div></div>;
+  redirect(`/${ContentPages[0].id}`);
 }
