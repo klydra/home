@@ -65,8 +65,8 @@ export function Banner() {
         </div>
       </div>
       <div className="h-6 w-full"></div>
-      <div className="px-2 w-full overflow-hidden">
-        <div className="flex gap-8 overflow-auto">
+      <div className="w-full overflow-auto">
+        <div className="flex gap-8 px-2">
           {contentPages.map((page) => {
             const selected = pathname.startsWith(`/${page.id}`);
             const ref = useRef<HTMLButtonElement>(null);

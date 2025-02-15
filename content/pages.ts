@@ -12,4 +12,8 @@ export const contentPages = [
     id: "projects",
     title: "Projects",
   },
+  {
+    id: "contact",
+    title: "Contact",
+  },
 ] as const satisfies ContentPage[];
