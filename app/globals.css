@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --primary: 240, 240, 240;
+  --primary: 200, 200, 200;
+  --highlight: 255, 255, 255;
   --secondary: 0, 0, 0;
 }
 
@@ -11,6 +12,10 @@ body {
   color: rgb(var(--primary));
   background: rgb(var(--secondary));
   font-family: "IBM";
+
+  *:focus {
+    outline: none;
+  }
 }
 
 @font-face {

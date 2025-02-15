@@ -10,6 +10,7 @@ export default {
     extend: {
       colors: {
         primary: "rgb(var(--primary))",
+        highlight: "rgb(var(--highlight))",
         secondary: "rgb(var(--secondary))",
       },
     },

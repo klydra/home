@@ -3,7 +3,7 @@
 import { SCALE_CH_PX } from "@/app/layout";
 import { ContentPages } from "@/content/pages";
 import { usePathname, useRouter } from "next/navigation";
-import { useLayoutEffect, useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 const BANNER_CHAR_DURATION_SECONDS = 2;
@@ -65,26 +65,31 @@ export function Banner() {
         </div>
       </div>
       <div className="h-6 w-full"></div>
-      <div className="w-full flex gap-8 mx-2 overflow-auto">
-        {ContentPages.map((page) => {
-          const selected = pathname.startsWith(`/${page.id}`);
+      <div className="px-2 w-full overflow-hidden">
+        <div className="flex gap-8 overflow-auto">
+          {ContentPages.map((page) => {
+            const selected = pathname.startsWith(`/${page.id}`);
+            const ref = useRef<HTMLButtonElement>(null);
 
-          return (
-            <button
-              className={twMerge(
-                "flex flex-row items-center hover:underline focus:underline focus:outline-none px-[1ch] h-6",
-                selected && "bg-primary text-secondary h-8 pb-2"
-              )}
-              key={page.id}
-              onClick={(e) => {
-                e.preventDefault();
-                router.push(`/${page.id}`);
-              }}
-            >
-              <span>{page.title}</span>
-            </button>
-          );
-        })}
+            return (
+              <button
+                ref={ref}
+                className={twMerge(
+                  "flex flex-row items-center hover:text-highlight focus:text-highlight px-[1ch] h-6",
+                  selected && "bg-primary text-secondary h-8 pb-2"
+                )}
+                key={page.id}
+                onClick={(e) => {
+                  e.preventDefault();
+                  ref.current?.blur();
+                  router.push(`/${page.id}`);
+                }}
+              >
+                <span>{page.title}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
