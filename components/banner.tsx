@@ -1,6 +1,6 @@
 export function Banner() {
   return (
-    <div className="w-full bg-accent">
+    <div className="w-full bg-primary">
       <div className="relative h-6 w-full max-w-full overflow-hidden">
         <div
           className="w-[300%] flex flex-row h-full"
@@ -15,16 +15,16 @@ export function Banner() {
           {Array.from({ length: 25 }, (_, i) => i * 4).map((factor, index) => (
             <div
               key={index}
-              className="flex-1 bg-white"
+              className="flex-1 bg-secondary"
               style={{ opacity: `${factor}%` }}
             ></div>
           ))}
-          <div className="flex-[15] bg-white"></div>
+          <div className="flex-[15] bg-secondary"></div>
           {Array.from({ length: 25 }, (_, i) => 100 - i * 4).map(
             (factor, index) => (
               <div
                 key={index}
-                className="flex-1 bg-white"
+                className="flex-1 bg-secondary"
                 style={{ opacity: `${factor}%` }}
               ></div>
             )
@@ -33,7 +33,7 @@ export function Banner() {
           {Array.from({ length: 25 }, (_, i) => i * 4).map((factor, index) => (
             <div
               key={index}
-              className="flex-1 bg-white"
+              className="flex-1 bg-secondary"
               style={{ opacity: `${factor}%` }}
             ></div>
           ))}
@@ -44,7 +44,7 @@ export function Banner() {
           </p>
         </div>
       </div>
-      <div className="h-6 w-full bg-white opacity-20"></div>
+      <div className="h-6 w-full bg-secondary opacity-20"></div>
       <div className="h-6 w-full"></div>
     </div>
   );
