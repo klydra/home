@@ -5,8 +5,8 @@ import { twMerge } from "tailwind-merge";
 
 type SplitOption = {
   title: string;
-  option: string;
-  information: React.ReactNode;
+  option?: string;
+  information?: React.ReactNode;
 };
 
 export function Split({ children }: { children: SplitOption[] }) {
@@ -48,13 +48,20 @@ export function Split({ children }: { children: SplitOption[] }) {
                 tabIndex={index}
               >
                 <td className="p-2">{option.title}</td>
-                <td className="p-2">{option.information}</td>
+                <td className="p-2">{option.option}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="flex-[3] lg:border-l-2 lg:border-t-0 border-t-2 lg:border-primary p-4">
+      <div
+        className={twMerge(
+          selected?.information
+            ? "flex-[3] lg:border-l-2 lg:border-t-0 border-t-2 lg:border-primary p-4 "
+            : "w-0 opacity-0",
+          "transition-all duration-300 motion-reduce:transition-none"
+        )}
+      >
         {selected?.information}
       </div>
     </div>
