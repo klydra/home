@@ -59,7 +59,7 @@ export function Split({ children }: { children: SplitOption[] }) {
           selected?.information
             ? "flex-[3] lg:border-l-2 lg:border-t-0 border-t-2 lg:border-primary p-4 "
             : "w-0 opacity-0",
-          "transition-all duration-300 motion-reduce:transition-none"
+          "transition-all motion-reduce:transition-none"
         )}
       >
         {selected?.information}

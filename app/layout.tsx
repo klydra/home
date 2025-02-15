@@ -11,7 +11,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-command antialiased flex flex-col h-screen">
+      <body className="font-command antialiased flex flex-col h-screen duration-200">
         <header>
           <Banner />
         </header>

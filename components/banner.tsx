@@ -75,8 +75,9 @@ export function Banner() {
               <button
                 ref={ref}
                 className={twMerge(
-                  "flex flex-row items-center hover:text-highlight focus:text-highlight px-[1ch] h-6",
-                  selected && "bg-primary text-secondary h-8 pb-2"
+                  "transition-colors motion-reduce:transition-none",
+                  "flex flex-row items-center hover:text-highlight focus:text-highlight px-[1ch] h-8 pb-2",
+                  selected && "bg-primary text-secondary"
                 )}
                 key={page.id}
                 onClick={(e) => {
