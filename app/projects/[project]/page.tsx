@@ -38,14 +38,7 @@ export default function Page() {
         <button
           className="absolute top-2 right-2 size-8 bg-secondary border-2 border-primary cursor-pointer hover:text-highlight focus:text-highlight"
           tabIndex={0}
-          onSubmit={(e) => {
-            e.preventDefault();
-            router.back();
-          }}
-          onClick={(e) => {
-            e.preventDefault();
-            router.back();
-          }}
+          onClick={() => router.back()}
         >
           <p className="pl-0.5 -mt-0.5">x</p>
         </button>
@@ -59,14 +52,11 @@ export default function Page() {
               />
               <div className="flex flex-col gap-5">
                 {project.links.map((link, index) => {
-                  const open = () => window.open(link.url, "_blank");
-
                   return (
                     <button
                       key={index}
                       className="flex flex-row justify-end items-center gap-3 opacity-80 hover:opacity-100 focus:opacity-100"
-                      onClick={open}
-                      onSubmit={open}
+                      onClick={() => window.open(link.url, "_blank")}
                     >
                       <span style={{ color: link.color }}>{link.title}</span>
                       <span>{" - "}</span>
@@ -110,13 +100,10 @@ export default function Page() {
 
                     if (!technology) return null;
 
-                    const open = () => window.open(technology.link, "_blank");
-
                     return (
-                      <button
-                        className="flex flex-row gap-4 items-center opacity-80 hover:opacity-100 focus:opacity-100"
-                        onClick={open}
-                        onSubmit={open}
+                      <div
+                        className="flex flex-row gap-4 items-center opacity-80 hover:opacity-100"
+                        onClick={() => window.open(technology.link, "_blank")}
                         key={index}
                       >
                         <div className="size-8 flex flex-col items-center justify-center">
@@ -134,7 +121,7 @@ export default function Page() {
                         >
                           {technology.title}
                         </p>
-                      </button>
+                      </div>
                     );
                   })}
                 </div>

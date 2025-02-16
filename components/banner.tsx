@@ -81,8 +81,7 @@ export function Banner() {
                   !selected && "hover:text-highlight"
                 )}
                 key={page.id}
-                onClick={(e) => {
-                  e.preventDefault();
+                onClick={() => {
                   ref.current?.blur();
                   router.push(`/${page.id}`);
                 }}

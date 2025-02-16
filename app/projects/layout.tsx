@@ -74,6 +74,7 @@ export default function Page({ children }: { children: React.ReactNode }) {
                     key={layer}
                     layer={layer}
                     selectedIndex={selectedIndex}
+                    setSelectedIndex={setSelectedIndex}
                   />
                 ))}
                 <TimelineHead />
@@ -89,10 +90,14 @@ export default function Page({ children }: { children: React.ReactNode }) {
 function TimelineRow({
   layer,
   selectedIndex,
+  setSelectedIndex,
 }: {
   layer: number;
   selectedIndex: number;
+  setSelectedIndex: (index: number) => void;
 }) {
+  const router = useRouter();
+
   return (
     <tr>
       <td className="flex flex-row items-center justify">
@@ -102,6 +107,7 @@ function TimelineRow({
             .map((project, index) => ({
               ...project,
               selected: selectedIndex === index,
+              index,
             }))
             .filter((project) => project.layer === layer)
             .map((project) => {
@@ -109,17 +115,21 @@ function TimelineRow({
                 (+(project.end || TIMELINE_END) - +project.start!) *
                 TIMELINE_SCALE_PX;
 
-              const ref = useRef<HTMLDivElement>(null);
+              const ref = useRef<HTMLButtonElement>(null);
 
               useEffect(() => {
                 if (project.selected) ref.current?.scrollIntoView();
               }, [project.selected]);
 
               return (
-                <div
+                <button
+                  aria-disabled={true}
+                  tabIndex={undefined}
                   ref={ref}
+                  onMouseOver={() => setSelectedIndex(project.index)}
+                  onClick={() => router.push(`/projects/${project.id}`)}
                   key={project.id}
-                  className="flex flex-row items-center h-6"
+                  className="flex flex-row items-center h-6 focus:text-highlight hover:text-highlight"
                   style={{
                     marginLeft: `${
                       (+project.start - +TIMELINE_START) * TIMELINE_SCALE_PX
@@ -135,7 +145,7 @@ function TimelineRow({
                     <span className="max-w-full">{project.title}</span>
                   </div>
                   {project.selected && <span>{"]"}</span>}
-                </div>
+                </button>
               );
             })}
         </div>
