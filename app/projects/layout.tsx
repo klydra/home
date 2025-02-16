@@ -2,6 +2,7 @@
 
 import { Split } from "@/components/split";
 import { contentProjects } from "@/content/projects";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 const TIMELINE_START = new Date("2016-06-01");
@@ -18,61 +19,70 @@ const TIMELINE_LAYERS = Array.from(
 
 export default function Page({ children }: { children: React.ReactNode }) {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const router = useRouter();
+  const params = useParams();
+
+  useEffect(() => {
+    if (!params.project) return;
+    const index = contentProjects.findIndex(
+      (project) => project.id === params.project
+    );
+    if (index !== -1) return setSelectedIndex(index);
+  }, [params.project]);
 
   return (
-    <>
-      <div className="flex flex-col h-full">
-        <div className="flex-[2]">
-          <Split
-            selectedIndex={selectedIndex}
-            setSelectedIndex={setSelectedIndex}
-          >
-            {contentProjects.map((project) => ({
-              title: project.title,
-              panel: (
-                <div className="flex flex-col gap-4">
-                  <img
-                    className="w-full max-w-64 min-w-8"
-                    src={`/assets/projects/${project.id}_pixelated.png`}
-                    style={{ imageRendering: "pixelated" }}
+    <div className="flex flex-col h-full relative">
+      {children}
+      <div className="flex-[2]">
+        <Split
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex}
+          disabled={typeof params.project === "string"}
+        >
+          {contentProjects.map((project) => ({
+            title: project.title,
+            panel: (
+              <div className="flex flex-col gap-4">
+                <img
+                  className="w-full max-w-64 min-w-8"
+                  src={`/assets/projects/${project.id}_pixelated.png`}
+                />
+                <h2 className="text-2xl text-highlight pt-8">
+                  {project.title}
+                </h2>
+                {project.teaser}
+              </div>
+            ),
+            onSelect: () => router.push(`/projects/${project.id}`),
+          }))}
+        </Split>
+      </div>
+      <div className="flex-1 border-t-2 border-primary p-4 flex flex-col">
+        <h2 className="pb-2">Timeline</h2>
+        <div className="flex-grow overflow-x-auto">
+          <div className="min-w-fit">
+            <table
+              className="table-fixed"
+              style={{
+                minWidth: `calc(${TIMELINE_LENGTH}px + 2ch)`,
+                maxWidth: `calc(${TIMELINE_LENGTH}px + 2ch)`,
+              }}
+            >
+              <tbody>
+                {TIMELINE_LAYERS.map((layer) => (
+                  <TimelineRow
+                    key={layer}
+                    layer={layer}
+                    selectedIndex={selectedIndex}
                   />
-                  <h2 className="text-2xl text-highlight pt-8">
-                    {project.title}
-                  </h2>
-                  {project.teaser}
-                </div>
-              ),
-            }))}
-          </Split>
-        </div>
-        <div className="flex-1 border-t-2 border-primary p-4 flex flex-col">
-          <h2 className="pb-2">Timeline</h2>
-          <div className="flex-grow overflow-x-auto">
-            <div className="min-w-fit">
-              <table
-                className="table-fixed"
-                style={{
-                  minWidth: `calc(${TIMELINE_LENGTH}px + 2ch)`,
-                  maxWidth: `calc(${TIMELINE_LENGTH}px + 2ch)`,
-                }}
-              >
-                <tbody>
-                  {TIMELINE_LAYERS.map((layer) => (
-                    <TimelineRow
-                      key={layer}
-                      layer={layer}
-                      selectedIndex={selectedIndex}
-                    />
-                  ))}
-                  <TimelineHead />
-                </tbody>
-              </table>
-            </div>
+                ))}
+                <TimelineHead />
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-      {children}
-    </>
+    </div>
   );
 }
 
@@ -120,7 +130,7 @@ function TimelineRow({
                     backgroundColor: project.color,
                   }}
                 >
-                  {project.selected && <span>{"["}</span>}
+                  {project.selected && <span className="pl-1">{"["}</span>}
                   <div className="flex-grow h-full overflow-hidden text-center mx-4">
                     <span className="max-w-full">{project.title}</span>
                   </div>

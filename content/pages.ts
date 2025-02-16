@@ -16,4 +16,4 @@ export const contentPages = [
     id: "contact",
     title: "Contact",
   },
-] as const satisfies ContentPage[];
+] as const satisfies ContentPage[] as Readonly<ContentPage[]>;

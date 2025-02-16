@@ -21,66 +21,74 @@ export const contentProjects = [
     layer: 1,
     title: "LGH Mobile",
     description: (
-      <p>
-        <b>LGH Mobile</b> is a{" "}
-        <b>
-          <a href="https://play.google.com/store/apps/details?id=klingens13.lgh_mobile">
-            Android
+      <>
+        <p>
+          <b>LGH Mobile</b> is a{" "}
+          <b>
+            <a href="https://play.google.com/store/apps/details?id=klingens13.lgh_mobile">
+              Android
+            </a>{" "}
+            and{" "}
+            <a href="https://apps.apple.com/de/app/lgh-mobile/id1478548684">
+              iOS
+            </a>{" "}
+            app
+          </b>{" "}
+          I built for the{" "}
+          <b>
+            <a href="https://lingemann-gymnasium.de/">local school</a> I'm going
+            to
+          </b>
+          , which provides the <b>1.1k+ users</b> with a{" "}
+          <b>personalized Push Notification</b> leading to a more user-friendly
+          version of the <b>new daily substitution plan</b>.
+        </p>
+        <p>
+          Besides that, it serves a <b>cleaner</b>, <b>mobile ready</b>{" "}
+          experience of our sometimes very <b>sloppy homepage</b>, a{" "}
+          <a href="https://lingemann-gymnasium.de/Breaking-News/">
+            Breaking News feed
+          </a>{" "}
+          and a <b>quick and instantaneous</b> way for administration to reach{" "}
+          <b>students and parents</b>.
+        </p>
+        <p>
+          Long gone are the <b>manual uploads</b> of substitution plan as a{" "}
+          <b>PDF</b> behind <b>5 redirects</b> for the user and here is a{" "}
+          <b>responsive online editor</b> as part of a <b>full custom</b>{" "}
+          teacher console.
+        </p>
+        <p>
+          Alongside the app, the <b>homepage</b> also got refreshing{" "}
+          <b>new features and designs</b> in the internal area.
+        </p>
+        <p>
+          The app also featured a{" "}
+          <a href="https://www.lingemann-gymnasium.de/fileadmin/Datenablage/BreakingNews/LGH_Elevated.png">
+            3D-Explorer of the school
+          </a>{" "}
+          including <b>different states</b> of the back then{" "}
+          <a href="https://www.lingemann-gymnasium.de/fileadmin/Datenablage/BreakingNews/LGH_Elevated/7.png">
+            recent renovations
+          </a>
+          , different{" "}
+          <a href="https://www.lingemann-gymnasium.de/fileadmin/Datenablage/BreakingNews/LGH_Elevated/6.png">
+            3D floor plans
           </a>{" "}
           and{" "}
-          <a href="https://apps.apple.com/de/app/lgh-mobile/id1478548684">
-            iOS
+          <a href="https://www.lingemann-gymnasium.de/fileadmin/Datenablage/BreakingNews/LGH_Elevated/8.png">
+            indoor navigation
           </a>{" "}
-          app
-        </b>{" "}
-        I built for the{" "}
-        <b>
-          <a href="https://lingemann-gymnasium.de/">local school</a> I'm going
-          to
-        </b>
-        , which provides the <b>1.1k+ users</b> with a{" "}
-        <b>personalized Push Notification</b> leading to a more user-friendly
-        version of the <b>new daily substitution plan</b>.<br />
-        \nBesides that, it serves a <b>cleaner</b>, <b>mobile ready</b>{" "}
-        experience of our sometimes very <b>sloppy homepage</b>, a{" "}
-        <a href="https://lingemann-gymnasium.de/Breaking-News/">
-          Breaking News feed
-        </a>{" "}
-        and a <b>quick and instantaneous</b> way for administration to reach{" "}
-        <b>students and parents</b>.<br />
-        \nLong gone are the <b>manual uploads</b> of substitution plan as a{" "}
-        <b>PDF</b> behind <b>5 redirects</b> for the user and here is a{" "}
-        <b>responsive online editor</b> as part of a <b>full custom</b> teacher
-        console.
-        <br />
-        \nAlongside the app, the <b>homepage</b> also got refreshing{" "}
-        <b>new features and designs</b> in the internal area.
-        <br />
-        \nThe app also featured a{" "}
-        <a href="https://www.lingemann-gymnasium.de/fileadmin/Datenablage/BreakingNews/LGH_Elevated.png">
-          3D-Explorer of the school
-        </a>{" "}
-        including <b>different states</b> of the back then{" "}
-        <a href="https://www.lingemann-gymnasium.de/fileadmin/Datenablage/BreakingNews/LGH_Elevated/7.png">
-          recent renovations
-        </a>
-        , different{" "}
-        <a href="https://www.lingemann-gymnasium.de/fileadmin/Datenablage/BreakingNews/LGH_Elevated/6.png">
-          3D floor plans
-        </a>{" "}
-        and{" "}
-        <a href="https://www.lingemann-gymnasium.de/fileadmin/Datenablage/BreakingNews/LGH_Elevated/8.png">
-          indoor navigation
-        </a>{" "}
-        using the many <b>WiFi-APs for positioning</b>, inside{" "}
-        <a href="https://www.lingemann-gymnasium.de/fileadmin/Datenablage/BreakingNews/LGH_Elevated/5.png">
-          downloadable packages
-        </a>
-        , which <b>never got out of Beta</b> and unfortunately <b>canceled</b>{" "}
-        due to <b>time constraints</b>, <b>but worked for a brief period</b>,{" "}
-        <b>winning</b> the regional first place at{" "}
-        <a href="https://www.jugend-forscht.de/">Jugend Forscht</a>.
-      </p>
+          using the many <b>WiFi-APs for positioning</b>, inside{" "}
+          <a href="https://www.lingemann-gymnasium.de/fileadmin/Datenablage/BreakingNews/LGH_Elevated/5.png">
+            downloadable packages
+          </a>
+          , which <b>never got out of Beta</b> and unfortunately <b>canceled</b>{" "}
+          due to <b>time constraints</b>, <b>but worked for a brief period</b>,{" "}
+          <b>winning</b> the regional first place at{" "}
+          <a href="https://www.jugend-forscht.de/">Jugend Forscht</a>.
+        </p>
+      </>
     ),
     teaser: (
       <p>
@@ -139,7 +147,32 @@ export const contentProjects = [
       },
     ],
     color: "#8c2f3a",
-    technologies: ["react", "unreal-engine"],
+    technologies: [
+      "flutter",
+      "unity",
+      "java",
+      "dart",
+      "typescript",
+      "javascript",
+      "nodejs",
+      "react",
+      "nextjs",
+      "cloudflare-pages",
+      "cloudflare-workers",
+      "google-cloud",
+      "google-cloud-pubsub",
+      "google-cloud-compute-engine",
+      "firebase",
+      "firebase-in-app-messaging",
+      "firebase-performance",
+      "firebase-storage",
+      "firebase-functions",
+      "firebase-authentication",
+      "firebase-crashlytics",
+      "firebase-firestore",
+      "firebase-cloud-messaging",
+      "firebase-app-check",
+    ],
     start: new Date("2019-07-02"),
     end: new Date("2024-03-03"),
   },
@@ -174,7 +207,7 @@ export const contentProjects = [
       {
         title: "GitHub",
         url: "https://github.com/klydra/classified.ink",
-        color: "#000000",
+        color: "#FFFFFF",
         icon: "github_pixelated.png",
       },
     ],
@@ -183,4 +216,4 @@ export const contentProjects = [
     start: new Date("2024-03-14"),
     end: null,
   },
-] as const satisfies ContentProject[];
+] as const satisfies ContentProject[] as Readonly<ContentProject[]>;

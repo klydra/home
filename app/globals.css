@@ -16,6 +16,14 @@ body {
   *:focus {
     outline: none;
   }
+
+  img {
+    image-rendering: pixelated;
+  }
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 @font-face {

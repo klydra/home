@@ -1,8 +1,9 @@
 type ContentTechnology = {
   id: string;
   title: string;
-  color: string;
   link: string;
+  color?: string;
+  icon?: string;
 };
 
 export const contentTechnologies = [
@@ -87,82 +88,101 @@ export const contentTechnologies = [
   {
     id: "google-cloud",
     title: "Google Cloud",
-    color: "#808080",
     link: "https://cloud.google.com/",
+    color: "#4285F4",
   },
   {
+    icon: "google-cloud",
     id: "google-cloud-pubsub",
     title: "Google Cloud Pub Sub",
     color: "#4285F4",
     link: "https://cloud.google.com/pubsub",
   },
   {
+    icon: "google-cloud",
     id: "google-cloud-compute-engine",
     title: "Google Cloud Compute Engine",
     color: "#4285F4",
     link: "https://cloud.google.com/compute",
   },
   {
+    id: "firebase",
+    title: "Firebase",
+    color: "#F47F0A",
+    link: "https://firebase.google.com",
+  },
+  {
+    icon: "firebase",
     id: "firebase-in-app-messaging",
     title: "Firebase In-App Messaging",
     color: "#F47F0A",
     link: "https://firebase.google.com/products/in-app-messaging",
   },
   {
+    icon: "firebase",
     id: "firebase-performance",
     title: "Firebase Performance",
     color: "#F47F0A",
     link: "https://firebase.google.com/products/performance",
   },
   {
+    icon: "firebase",
     id: "firebase-storage",
     title: "Firebase Storage",
     color: "#F47F0A",
     link: "https://firebase.google.com/products/storage",
   },
   {
+    icon: "firebase",
     id: "firebase-functions",
     title: "Firebase Functions",
     color: "#F47F0A",
     link: "https://firebase.google.com/products/functions",
   },
   {
+    icon: "firebase",
     id: "firebase-authentication",
     title: "Firebase Authentication",
     color: "#F47F0A",
     link: "https://firebase.google.com/products/authentication",
   },
   {
+    icon: "firebase",
     id: "firebase-crashlytics",
     title: "Firebase Crashlytics",
     color: "#F47F0A",
     link: "https://firebase.google.com/products/crashlytics",
   },
   {
+    icon: "firebase",
     id: "firebase-firestore",
     title: "Firebase Firestore",
     color: "#F47F0A",
     link: "https://firebase.google.com/products/firestore",
   },
   {
+    icon: "firebase",
     id: "firebase-cloud-messaging",
     title: "Firebase Cloud Messaging",
     color: "#F47F0A",
     link: "https://firebase.google.com/products/cloud-messaging",
   },
   {
+    icon: "firebase",
     id: "firebase-app-check",
     title: "Firebase App-Check",
     color: "#F47F0A",
     link: "https://firebase.google.com/products/app-check",
   },
   {
+    icon: "cloudflare",
     id: "cloudflare-pages",
     title: "Cloudflare Pages",
     color: "#EF780C",
     link: "https://pages.dev",
   },
   {
+    icon: "cloudflare",
     id: "cloudflare-workers",
     title: "Cloudflare Workers",
     color: "#EF780C",
@@ -279,9 +299,8 @@ export const contentTechnologies = [
   {
     id: "nextjs",
     title: "Next.js",
-    color: "#0D1117",
     link: "https://nextjs.org/",
   },
-] as const satisfies ContentTechnology[];
+] as const satisfies ContentTechnology[] as Readonly<ContentTechnology[]>;
 
 export type ContentTechnologyID = (typeof contentTechnologies)[number]["id"];

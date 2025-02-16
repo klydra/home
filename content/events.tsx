@@ -119,4 +119,4 @@ export const contentEvents = [
     icon: "vscode_pixelated.png",
     color: "#40ABF2",
   },
-];
+] as const satisfies ContentEvent[] as Readonly<ContentEvent[]>;

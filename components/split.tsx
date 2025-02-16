@@ -7,14 +7,17 @@ type SplitOption = {
   title: string;
   option?: string;
   panel?: React.ReactNode;
+  onSelect?: () => void;
 };
 
 export function Split({
   children,
+  disabled,
   selectedIndex: _selectedIndex,
   setSelectedIndex: _setSelectedIndex,
 }: {
   children: SplitOption[];
+  disabled?: boolean;
 } & (
   | {
       selectedIndex: number;
@@ -42,6 +45,10 @@ export function Split({
           if (selectedIndex < children.length - 1)
             setSelectedIndex(selectedIndex + 1);
           break;
+
+        case "Enter":
+          selected?.onSelect?.();
+          break;
       }
     }
     window.addEventListener("keydown", updateSelected), false;
@@ -55,15 +62,17 @@ export function Split({
           <tbody>
             {children.map((option, index) => (
               <tr
-                autoFocus={index === 0}
+                autoFocus={disabled ? undefined : index === 0}
                 onFocus={() => setSelectedIndex(index)}
                 key={index}
                 onMouseOver={() => setSelectedIndex(index)}
+                onClick={option.onSelect}
                 className={twMerge(
                   "cursor-pointer",
                   selectedIndex === index && "text-highlight"
                 )}
-                tabIndex={index}
+                aria-disabled={disabled}
+                tabIndex={disabled ? undefined : index}
               >
                 <td className="p-2">{option.title}</td>
                 <td className="p-2">{option.option}</td>
