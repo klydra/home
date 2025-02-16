@@ -5,12 +5,13 @@ type ContentProject = {
   id: string;
   title: string;
   description: React.ReactNode;
+  teaster: React.ReactNode;
   links: { title: string; url: string; color: string; icon: string }[];
   features: React.ReactNode[];
   color: string;
   technologies: ContentTechnologyID[];
   start: Date;
-  end: Date;
+  end: Date | null;
 };
 
 export const contentProjects = [
@@ -79,6 +80,15 @@ export const contentProjects = [
         <a href="https://www.jugend-forscht.de/">Jugend Forscht</a>.
       </p>
     ),
+    teaster: (
+      <p>
+        The <b>smarter homepage extension suite</b> to <b>supplement</b> the
+        ancient CMS system that runs <b>the homepage of my school</b>. After{" "}
+        <b>maintaining it for years</b>, I sadly had to sunset it to the
+        disappointment of all students, but it worked{" "}
+        <b>flawlessly until the last day</b>.
+      </p>
+    ),
     features: [
       <p>
         <b>Personalised Push-Notifications</b> for{" "}
@@ -130,5 +140,44 @@ export const contentProjects = [
     technologies: ["react", "unreal-engine"],
     start: new Date("2019-07-02"),
     end: new Date("2024-03-03"),
+  },
+  {
+    id: "classified-ink",
+    title: "classified.ink",
+    description: (
+      <p>
+        Sadly, this project is currently freezed, since I had to abandon it for
+        the time being.
+      </p>
+    ),
+    teaster: (
+      <p>A fully private, secure and free note-taking app for everyone.</p>
+    ),
+    features: [
+      <p>
+        Full <b>client side encryption and decryption</b>
+      </p>,
+      <p>
+        Fully <b>open source</b> and <b>self-hostable</b>
+      </p>,
+    ],
+    links: [
+      {
+        title: "Website (very WIP)",
+        url: "https://classified.ink",
+        color: "#3b0806",
+        icon: "web_pixelated.png",
+      },
+      {
+        title: "GitHub",
+        url: "https://github.com/klydra/classified.ink",
+        color: "#000000",
+        icon: "github_pixelated.png",
+      },
+    ],
+    color: "#3b0806",
+    technologies: ["react", "typescript", "turso"],
+    start: new Date("2024-03-14"),
+    end: null,
   },
 ] as const satisfies ContentProject[];
