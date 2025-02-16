@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useImperativeHandle, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 type SplitOption = {
@@ -9,9 +9,27 @@ type SplitOption = {
   information?: React.ReactNode;
 };
 
-export function Split({ children }: { children: SplitOption[] }) {
+export interface SplitRef {
+  setSelectedIndex: (index: number) => void;
+  selectedIndex: number;
+  selected: SplitOption | null;
+}
+
+export function Split({
+  children,
+  ref,
+}: {
+  children: SplitOption[];
+  ref?: React.Ref<SplitRef>;
+}) {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const selected = children[selectedIndex];
+
+  useImperativeHandle(ref, () => ({
+    setSelectedIndex,
+    selectedIndex,
+    selected,
+  }));
 
   useEffect(() => {
     function updateSelected(e: KeyboardEvent) {
