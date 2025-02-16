@@ -3,6 +3,7 @@ import { ContentTechnologyID } from "./technologies";
 
 type ContentProject = {
   id: string;
+  layer: number;
   title: string;
   description: React.ReactNode;
   teaster: React.ReactNode;
@@ -17,6 +18,7 @@ type ContentProject = {
 export const contentProjects = [
   {
     id: "lgh-mobile",
+    layer: 1,
     title: "LGH Mobile",
     description: (
       <p>
@@ -143,6 +145,7 @@ export const contentProjects = [
   },
   {
     id: "classified-ink",
+    layer: 2,
     title: "classified.ink",
     description: (
       <p>
