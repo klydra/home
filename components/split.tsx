@@ -1,35 +1,35 @@
 "use client";
 
-import React, { useEffect, useImperativeHandle, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 type SplitOption = {
   title: string;
   option?: string;
-  information?: React.ReactNode;
+  panel?: React.ReactNode;
 };
-
-export interface SplitRef {
-  setSelectedIndex: (index: number) => void;
-  selectedIndex: number;
-  selected: SplitOption | null;
-}
 
 export function Split({
   children,
-  ref,
+  selectedIndex: _selectedIndex,
+  setSelectedIndex: _setSelectedIndex,
 }: {
   children: SplitOption[];
-  ref?: React.Ref<SplitRef>;
-}) {
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+} & (
+  | {
+      selectedIndex: number;
+      setSelectedIndex: (index: number) => void;
+    }
+  | {
+      selectedIndex?: undefined;
+      setSelectedIndex?: undefined;
+    }
+)) {
+  const [selectedIndex, setSelectedIndex] =
+    _selectedIndex !== undefined && _setSelectedIndex !== undefined
+      ? [_selectedIndex, _setSelectedIndex]
+      : useState<number>(0);
   const selected = children[selectedIndex];
-
-  useImperativeHandle(ref, () => ({
-    setSelectedIndex,
-    selectedIndex,
-    selected,
-  }));
 
   useEffect(() => {
     function updateSelected(e: KeyboardEvent) {
@@ -74,13 +74,13 @@ export function Split({
       </div>
       <div
         className={twMerge(
-          selected?.information
-            ? "flex-[3] lg:border-l-2 lg:border-t-0 border-t-2 lg:border-primary p-4 "
+          selected?.panel
+            ? "flex-[3] lg:border-l-2 lg:border-t-0 border-t-2 lg:border-primary p-8"
             : "lg:w-0 lg:h-auto w-auto h-0 opacity-0",
           "transition-all motion-reduce:transition-none"
         )}
       >
-        {selected?.information}
+        {selected?.panel}
       </div>
     </div>
   );

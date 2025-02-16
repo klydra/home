@@ -6,7 +6,7 @@ type ContentProject = {
   layer: number;
   title: string;
   description: React.ReactNode;
-  teaster: React.ReactNode;
+  teaser: React.ReactNode;
   links: { title: string; url: string; color: string; icon: string }[];
   features: React.ReactNode[];
   color: string;
@@ -82,7 +82,7 @@ export const contentProjects = [
         <a href="https://www.jugend-forscht.de/">Jugend Forscht</a>.
       </p>
     ),
-    teaster: (
+    teaser: (
       <p>
         The <b>smarter homepage extension suite</b> to <b>supplement</b> the
         ancient CMS system that runs <b>the homepage of my school</b>. After{" "}
@@ -138,7 +138,7 @@ export const contentProjects = [
         icon: "web_pixelated.png",
       },
     ],
-    color: "#5D50A2",
+    color: "#8c2f3a",
     technologies: ["react", "unreal-engine"],
     start: new Date("2019-07-02"),
     end: new Date("2024-03-03"),
@@ -153,7 +153,7 @@ export const contentProjects = [
         the time being.
       </p>
     ),
-    teaster: (
+    teaser: (
       <p>A fully private, secure and free note-taking app for everyone.</p>
     ),
     features: [
