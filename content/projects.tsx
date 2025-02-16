@@ -8,7 +8,6 @@ type ContentProject = {
   links: { title: string; url: string; color: string; icon: string }[];
   features: React.ReactNode[];
   color: string;
-  image: string;
   technologies: ContentTechnologyID[];
   start: Date;
   end: Date;
@@ -127,7 +126,6 @@ export const contentProjects = [
         icon: "web_pixelated.png",
       },
     ],
-    image: "lgh-mobile_pixelated.png",
     color: "#5D50A2",
     technologies: ["react", "unreal-engine"],
     start: new Date("2019-07-02"),
