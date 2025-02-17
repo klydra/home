@@ -1,7 +1,7 @@
 "use client";
 
 import { Split } from "@/components/split";
-import { contentContacts } from "@/content/contact";
+import { contentExits } from "@/content/exit";
 
 export default function Page() {
   return (
@@ -35,15 +35,12 @@ export default function Page() {
           title: "Direct Boot",
           disabled: true,
         },
-        ...contentContacts.map((contact, index) => ({
+        ...contentExits.map((contact, index) => ({
           title: `OPT-${index}: ${contact.title}`,
           option: () => contact.username,
           panel: () => (
             <div>
-              <img
-                src={`/assets/links/${contact.id}_pixelated.png`}
-                alt={contact.id}
-              />
+              <img src={`/assets/links/${contact.id}_pixelated.png`} />
               <h1 className="text-highlight text-3xl mt-8">
                 {contact.username}
               </h1>
@@ -54,6 +51,7 @@ export default function Page() {
               </p>
             </div>
           ),
+          onSelect: () => window.open(contact.link.url, "_blank"),
         })),
       ]}
     </Split>

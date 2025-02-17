@@ -17,8 +17,8 @@ const pages = [
     title: "Occupation",
   },
   {
-    id: "contact",
-    title: "Contact",
+    id: "exit",
+    title: "Exit",
   },
 ] as const satisfies ContentPage[];
 export const contentPages = pages as Readonly<ContentPage[]>;

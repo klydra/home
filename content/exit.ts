@@ -1,4 +1,4 @@
-type ContentContact = {
+type ContentExit = {
   id: string;
   title: string;
   username: string;
@@ -8,7 +8,7 @@ type ContentContact = {
   };
 };
 
-const contacts = [
+const exits = [
   {
     id: "mail",
     title: "E-Mail",
@@ -45,5 +45,5 @@ const contacts = [
       text: "linkedin.com/in/klydra",
     },
   },
-] as const satisfies ContentContact[];
-export const contentContacts = contacts as Readonly<ContentContact[]>;
+] as const satisfies ContentExit[];
+export const contentExits = exits as Readonly<ContentExit[]>;

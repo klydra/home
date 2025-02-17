@@ -21,6 +21,7 @@ const eslintConfig = [
       "object-curly-spacing": ["error", "always"],
       "brace-style": ["error", "1tbs"],
       "react-hooks/rules-of-hooks": "warn",
+      "@next/next/no-img-element": "off",
     },
   },
 ];
