@@ -1,18 +1,14 @@
-"use server";
-
-import { promises as fs } from "fs";
-
 export type Signature = {
   date: string;
   name: string;
 };
 
 export async function loadSignatures() {
-  const signatures = await fs.readFile(
-    process.cwd() + "/content/signatures.csv",
-    "utf8"
-  );
-  return signatures.split("\n").map((signature) => {
+  const signatures = await fetch("/signatures.csv");
+  if (signatures.status !== 200) return [];
+
+  const text = await signatures.text();
+  return text.split("\n").map((signature) => {
     const [date, name] = signature.split(",");
     return { name, date } satisfies Signature;
   });
