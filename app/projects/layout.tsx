@@ -14,16 +14,8 @@ const TIMELINE_END = new Date(
   }-${TIMELINE_NOW.getDay()}`
 );
 const TIMELINE_DURATION = TIMELINE_END.getTime() - TIMELINE_START.getTime();
-
-const TIMELINE_SCALE_PX_MINIMUM = 1 / 1000 / 60 / 60 / 24 / 2;
-const TIMELINE_LENGTH_DEFAULT = TIMELINE_DURATION * TIMELINE_SCALE_PX_MINIMUM;
-const TIMELINE_RENDER_WIDTH =
-  (typeof window === "object" ? window.innerWidth : 0) - 88;
-const TIMELINE_SCALE_PX =
-  TIMELINE_RENDER_WIDTH > TIMELINE_LENGTH_DEFAULT
-    ? TIMELINE_RENDER_WIDTH / TIMELINE_DURATION
-    : TIMELINE_SCALE_PX_MINIMUM;
-const TIMELINE_LENGTH = TIMELINE_DURATION * TIMELINE_SCALE_PX;
+const TIMELINE_SCALE_PX_DEFAULT = 1 / 1000 / 60 / 60 / 24 / 2;
+const TIMELINE_LENGTH_DEFAULT = TIMELINE_DURATION * TIMELINE_SCALE_PX_DEFAULT;
 
 const TIMELINE_LAYERS_AMOUNT =
   contentProjects.reduce((acc, project) => Math.max(acc, project.layer), 0) + 1;
@@ -46,10 +38,25 @@ export default function Page({ children }: { children: React.ReactNode }) {
   }, [params.project]);
 
   const timeline = useRef<HTMLDivElement>(null);
+  const [{ TIMELINE_SCALE_PX, TIMELINE_LENGTH }, setScale] = useState({
+    TIMELINE_SCALE_PX: TIMELINE_SCALE_PX_DEFAULT,
+    TIMELINE_LENGTH: TIMELINE_LENGTH_DEFAULT,
+  });
 
   useLayoutEffect(() => {
     if (timeline.current?.scrollLeft !== null)
       timeline.current!.scrollLeft = TIMELINE_LENGTH;
+
+    const width = timeline.current?.clientWidth ?? 0;
+    const scale =
+      width > TIMELINE_LENGTH_DEFAULT
+        ? width / TIMELINE_DURATION
+        : TIMELINE_SCALE_PX_DEFAULT;
+
+    setScale({
+      TIMELINE_SCALE_PX: scale,
+      TIMELINE_LENGTH: TIMELINE_DURATION * TIMELINE_SCALE_PX,
+    });
   }, [timeline]);
 
   return (
@@ -73,9 +80,10 @@ export default function Page({ children }: { children: React.ReactNode }) {
                     layer={layer}
                     selectedIndex={selectedIndex}
                     setSelectedIndex={setSelectedIndex}
+                    TIMELINE_SCALE_PX={TIMELINE_SCALE_PX}
                   />
                 ))}
-                <TimelineHead />
+                <TimelineHead TIMELINE_SCALE_PX={TIMELINE_SCALE_PX} />
               </tbody>
             </table>
           </div>
@@ -125,10 +133,12 @@ function TimelineRow({
   layer,
   selectedIndex,
   setSelectedIndex,
+  TIMELINE_SCALE_PX,
 }: {
   layer: number;
   selectedIndex: number;
   setSelectedIndex: (index: number) => void;
+  TIMELINE_SCALE_PX: number;
 }) {
   return (
     <tr>
@@ -179,7 +189,7 @@ function TimelineRow({
   );
 }
 
-function TimelineHead() {
+function TimelineHead({ TIMELINE_SCALE_PX }: { TIMELINE_SCALE_PX: number }) {
   const yearFirst = TIMELINE_START.getFullYear() + 1;
   const yearLast = TIMELINE_END.getFullYear();
 
