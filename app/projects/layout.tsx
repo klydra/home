@@ -64,7 +64,7 @@ export default function Page({ children }: { children: React.ReactNode }) {
                 <ProjectTechnologies
                   technologies={project.technologies}
                   className="mt-10"
-                  limit={5}
+                  limit={6}
                 />
                 <p className="mt-8">
                   Press <span className="text-highlight">[Enter]</span> or{" "}
