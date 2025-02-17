@@ -72,12 +72,10 @@ export default function Page({ children }: { children: React.ReactNode }) {
                   limit={6}
                 />
                 <button
-                  className="mt-8"
+                  className="mt-8 underline"
                   onClick={() => router.push(`/projects/${project.id}`)}
                 >
-                  <b>
-                    <b>Press Here</b> to see more!
-                  </b>
+                  <b>Press Here</b> to see more!
                 </button>
               </div>
             ),
