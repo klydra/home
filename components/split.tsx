@@ -70,10 +70,10 @@ export function Split({
       <div className={`flex-[${flexLeft}] p-4`}>
         <table className="table-fixed w-full">
           <tbody>
-            {children.map((option) => {
+            {children.map((option, i) => {
               const index = options.findIndex((o) => o === option);
 
-              if (option === null) return <tr key={index} className="h-6"></tr>;
+              if (option === null) return <tr key={i} className="h-6"></tr>;
 
               const _disabled = option.disabled || disabled;
 
@@ -83,7 +83,7 @@ export function Split({
                   onFocus={
                     _disabled ? undefined : () => setSelectedIndex(index)
                   }
-                  key={index}
+                  key={i}
                   onMouseOver={
                     _disabled ? undefined : () => setSelectedIndex(index)
                   }

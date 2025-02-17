@@ -52,16 +52,16 @@ export default function Page() {
         },
         {
           title: "Uptime",
-          option: () => <p>20 years</p>,
+          option: () => "20 years",
         },
         {
           title: "Occupation",
           option: () => (
-            <p className="line-clamp-2">
+            <span className="line-clamp-2">
               Working Student
               <br />
               Software Engineering
-            </p>
+            </span>
           ),
         },
         null,
@@ -79,19 +79,19 @@ export default function Page() {
             }, []);
 
             return (
-              <p className="min-w-fit line-clamp-2">
+              <span className="min-w-fit line-clamp-2">
                 {time.toLocaleString("de-DE", {
                   timeZone: "Europe/Berlin",
                 })}
                 <br />
                 Europe/Germany
-              </p>
+              </span>
             );
           },
         },
         {
           title: "Current Version",
-          option: () => <p>N/A</p>,
+          option: () => "N/A",
         },
         null,
         null,
@@ -100,20 +100,20 @@ export default function Page() {
         {
           title: "Processor",
           option: () => (
-            <p className="line-clamp-2">
+            <span className="line-clamp-2">
               AMD™ Ryzen™ 9 5900X
               <br />
               12 Cores / 24 Threads
-            </p>
+            </span>
           ),
         },
         {
           title: "System Memory",
-          option: () => <p>63.9 GB DDR4 @ 2933 MT/s</p>,
+          option: () => "63.9 GB DDR4 @ 2933 MT/s",
         },
         {
           title: "System Graphics",
-          option: () => <p>Nvidia™ GeForce™ RTX 3090 24GB</p>,
+          option: () => "Nvidia™ GeForce™ RTX 3090 24GB",
         },
         null,
         null,
@@ -123,56 +123,56 @@ export default function Page() {
         },
         {
           title: "Gateway",
-          option: () => <p>opnsense.catcoo.net</p>,
+          option: () => "opnsense.catcoo.net",
         },
         {
           title: "System Hostname",
-          option: () => <p>catstation.catcoo.net</p>,
+          option: () => "catstation.catcoo.net",
         },
         null,
         null,
         { title: "Attached Storage", disabled: true },
         {
           title: "M.2-0: Samsung SSD 990 PRO NVMe",
-          option: () => <p>1.20 TB free / 1.81 TB total</p>,
+          option: () => "1.20 TB free / 1.81 TB total",
         },
         {
           title: "M.2-1: WD Black SN770 NVMe",
-          option: () => <p>320 GB free / 465 GB total</p>,
+          option: () => "320 GB free / 465 GB total",
         },
         {
           title: "M.2-2: Samsung SSD 980 EVO",
-          option: () => <p>334 GB free / 931 GB total</p>,
+          option: () => "334 GB free / 931 GB total",
         },
         {
           title: "SATA-0: SanDisk PLUS SSD",
-          option: () => <p>89 GB free / 476 GB total</p>,
+          option: () => "89 GB free / 476 GB total",
         },
         {
           title: "SATA-1: ASUS BW-16D1HT",
-          option: () => <p>BluRay 4K Disk Drive (modified)</p>,
+          option: () => "BluRay 4K Disk Drive (modified)",
         },
         {
           title: "LAN-0: \\\\truenas.catcoo.net\\chongus",
-          option: () => <p>8.85 TB free / 14.4 TB total</p>,
+          option: () => "8.85 TB free / 14.4 TB total",
         },
         null,
         null,
         { title: "Attached HID", disabled: true },
         {
           title: "HID-0: Keyboard",
-          option: () => <p>Keychron K2</p>,
+          option: () => "Keychron K2",
         },
         {
           title: "HID-1: Mouse",
-          option: () => <p>Logitech MX Master 3S</p>,
+          option: () => "Logitech MX Master 3S",
         },
         null,
         null,
         {
           title: "Access Level",
           disabled: true,
-          option: () => <p>Administrator</p>,
+          option: () => "Administrator",
         },
       ]}
     </Split>

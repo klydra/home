@@ -12,11 +12,11 @@ export default function Page() {
         return {
           title: occupation.title,
           option: () => (
-            <p className="line-clamp-2">
+            <span className="line-clamp-2">
               {occupation.timeframe}
               <br />
               {occupation.relation}
-            </p>
+            </span>
           ),
           panel: () => (
             <div>

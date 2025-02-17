@@ -3,11 +3,16 @@
 import { Split } from "@/components/split";
 import { contentProjects } from "@/content/projects";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ProjectTechnologies } from "./[project]/page";
 
 const TIMELINE_START = new Date("2017-06-01");
-const TIMELINE_END = new Date();
+const TIMELINE_NOW = new Date();
+const TIMELINE_END = new Date(
+  `${TIMELINE_NOW.getFullYear()}-${
+    TIMELINE_NOW.getMonth() + 1
+  }-${TIMELINE_NOW.getDay()}`
+);
 const TIMELINE_SCALE_PX = 1 / 1000 / 60 / 60 / 24 / 2;
 const TIMELINE_LENGTH =
   (TIMELINE_END.getTime() - TIMELINE_START.getTime()) * TIMELINE_SCALE_PX;
@@ -60,7 +65,7 @@ export default function Page({ children }: { children: React.ReactNode }) {
                 <h2 className="text-2xl text-highlight pt-8">
                   {project.title}
                 </h2>
-                <p>{project.teaser || project.description}</p>
+                {project.teaser || project.description}
                 <ProjectTechnologies
                   technologies={project.technologies}
                   className="mt-10"
@@ -186,10 +191,9 @@ function TimelineHead() {
             year === yearLast ? TIMELINE_END : new Date(`${year + 1}-01-01`);
 
           return (
-            <>
+            <React.Fragment key={year}>
               {year === yearFirst && (
                 <div
-                  key={`${year}s`}
                   style={{
                     width: `${
                       (+start - +TIMELINE_START) * TIMELINE_SCALE_PX
@@ -197,18 +201,14 @@ function TimelineHead() {
                   }}
                 ></div>
               )}
-              <div
-                key={`${year}l`}
-                className="h-6 w-0 flex flex-col items-center"
-              >
+              <div className="h-6 w-0 flex flex-col items-center">
                 <span>|</span>
                 <span>{year}</span>
               </div>
               <div
-                key={`${year}e`}
                 style={{ width: `${(+end - +start) * TIMELINE_SCALE_PX}px` }}
               ></div>
-            </>
+            </React.Fragment>
           );
         })}
       </td>

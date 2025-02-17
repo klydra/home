@@ -21,12 +21,12 @@ export default function Page() {
         {
           title: "Secure Boot",
           disabled: true,
-          option: () => <p>Enabled</p>,
+          option: () => "Enabled",
         },
         {
           title: "Fast Boot",
           disabled: true,
-          option: () => <p>Enabled</p>,
+          option: () => "Enabled",
         },
         null,
         null,
@@ -37,7 +37,7 @@ export default function Page() {
         },
         ...contentContacts.map((contact, index) => ({
           title: `OPT-${index}: ${contact.title}`,
-          option: () => <p>{contact.username}</p>,
+          option: () => contact.username,
           panel: () => (
             <div>
               <img
