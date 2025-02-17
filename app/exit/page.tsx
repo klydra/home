@@ -32,7 +32,7 @@ export default function Page() {
         null,
         null,
         {
-          title: "Direct Boot",
+          title: "Boot Entries",
           disabled: true,
         },
         ...contentExits.map((contact, index) => ({
