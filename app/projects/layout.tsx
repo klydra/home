@@ -5,6 +5,7 @@ import { Split } from "@/components/split";
 import { contentProjects } from "@/content/projects";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 const TIMELINE_START = new Date("2017-06-01");
 const TIMELINE_NOW = new Date();
@@ -47,18 +48,24 @@ export default function Page({ children }: { children: React.ReactNode }) {
     if (timeline.current?.scrollLeft !== null)
       timeline.current!.scrollLeft = TIMELINE_LENGTH;
 
-    const width = timeline.current?.clientWidth
-      ? timeline.current.clientWidth - 36
-      : 0;
-    const scale =
-      width > TIMELINE_LENGTH_DEFAULT
-        ? width / TIMELINE_DURATION
-        : TIMELINE_SCALE_PX_DEFAULT;
+    function updateSize() {
+      const width = timeline.current?.clientWidth
+        ? timeline.current.clientWidth - 36
+        : 0;
+      const scale =
+        width > TIMELINE_LENGTH_DEFAULT
+          ? width / TIMELINE_DURATION
+          : TIMELINE_SCALE_PX_DEFAULT;
 
-    setScale({
-      TIMELINE_SCALE_PX: scale,
-      TIMELINE_LENGTH: TIMELINE_DURATION * TIMELINE_SCALE_PX,
-    });
+      setScale({
+        TIMELINE_SCALE_PX: scale,
+        TIMELINE_LENGTH: TIMELINE_DURATION * TIMELINE_SCALE_PX,
+      });
+    }
+
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
   }, [timeline]);
 
   return (
@@ -66,7 +73,15 @@ export default function Page({ children }: { children: React.ReactNode }) {
       {children}
       <div className="border-b-2 border-primary p-4 flex flex-col">
         <h2 className="pb-2">Timeline</h2>
-        <div className="flex-grow overflow-x-auto pb-8" ref={timeline}>
+        <div
+          className={twMerge(
+            "flex-grow pb-8",
+            TIMELINE_LENGTH === TIMELINE_LENGTH_DEFAULT
+              ? "overflow-x-auto"
+              : "overflow-x-hidden"
+          )}
+          ref={timeline}
+        >
           <div className="min-w-fit">
             <table
               className="table-fixed"
