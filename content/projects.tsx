@@ -403,7 +403,7 @@ const projects = [
   {
     id: "technology-ag",
     layer: 3,
-    title: '"Technology" AG',
+    title: '"Technology" club',
     description: (
       <p>
         <b>A working group my friend and I host</b> at my school with{" "}
@@ -421,7 +421,7 @@ const projects = [
   {
     id: "informatics-ag",
     layer: 3,
-    title: '"Informatics" AG',
+    title: '"Informatics" club',
     description: (
       <>
         <p>

@@ -28,7 +28,7 @@ export function Banner() {
     () => Array.from({ length: chars }, (_, i) => i),
     [chars]
   );
-  const padding = (chars - BANNER_TEXT.length) / 2;
+  const padding = Math.floor((chars - BANNER_TEXT.length) / 2);
 
   return (
     <div className="w-full">

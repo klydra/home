@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 type SplitOption = {
+  disabled?: boolean;
   title: string;
   option?: () => React.ReactNode;
   panel?: React.ReactNode | (() => React.ReactNode);
@@ -36,7 +37,12 @@ export function Split({
     _selectedIndex !== undefined && _setSelectedIndex !== undefined
       ? [_selectedIndex, _setSelectedIndex]
       : useState<number>(0);
-  const selected = children[selectedIndex];
+
+  const options = children.filter(
+    (option) => option !== null && !option.disabled
+  );
+
+  const selected = options[selectedIndex];
 
   useEffect(() => {
     function updateSelected(e: KeyboardEvent) {
@@ -46,7 +52,7 @@ export function Split({
           break;
 
         case "ArrowDown":
-          if (selectedIndex < children.length - 1)
+          if (selectedIndex < options.length - 1)
             setSelectedIndex(selectedIndex + 1);
           break;
 
@@ -64,24 +70,33 @@ export function Split({
       <div className={`flex-[${flexLeft}] p-4`}>
         <table className="table-fixed w-full">
           <tbody>
-            {children.map((option, index) => {
+            {children.map((option) => {
+              const index = options.findIndex((o) => o === option);
+
               if (option === null) return <tr key={index} className="h-6"></tr>;
+
+              const _disabled = option.disabled || disabled;
 
               return (
                 <tr
-                  autoFocus={disabled ? undefined : index === 0}
-                  onFocus={() => setSelectedIndex(index)}
+                  autoFocus={_disabled ? undefined : index === 0}
+                  onFocus={
+                    _disabled ? undefined : () => setSelectedIndex(index)
+                  }
                   key={index}
-                  onMouseOver={() => setSelectedIndex(index)}
+                  onMouseOver={
+                    _disabled ? undefined : () => setSelectedIndex(index)
+                  }
                   onClick={option.onSelect}
                   className={twMerge(
                     "cursor-pointer",
-                    selectedIndex === index && "text-highlight"
+                    selectedIndex === index && "text-highlight",
+                    option.disabled && "opacity-50"
                   )}
-                  aria-disabled={disabled}
-                  tabIndex={disabled ? undefined : index}
+                  aria-disabled={_disabled}
+                  tabIndex={_disabled ? undefined : index}
                 >
-                  <td className="p-2">
+                  <td className="p-2 flex flex-col justify-start items-start">
                     <p className="line-clamp-1">{option.title}</p>
                   </td>
                   {option.option && (
@@ -100,7 +115,7 @@ export function Split({
           `flex-[${flexRight}]`,
           selected?.panel
             ? "lg:border-l-2 lg:border-t-0 border-t-2 lg:border-primary p-8"
-            : "lg:w-0 lg:h-auto w-auto h-0 opacity-0",
+            : "lg:w-0 lg:h-auto w-auto h-0 opacity-0 flex-0",
           "transition-all motion-reduce:transition-none"
         )}
       >

@@ -9,7 +9,7 @@ export default function Page() {
     <Split>
       {[
         {
-          title: "Info",
+          title: "Site Info",
           panel: () => {
             const [avatar, setAvatar] = useState<boolean>(false);
 
@@ -47,9 +47,25 @@ export default function Page() {
           },
         },
         {
+          title: "Site Vendor",
+          option: () => "Jan Klinge (@klydra)",
+        },
+        {
           title: "Uptime",
           option: () => <p>20 years</p>,
         },
+        {
+          title: "Occupation",
+          option: () => (
+            <p className="line-clamp-2">
+              Working Student
+              <br />
+              Software Engineering
+            </p>
+          ),
+        },
+        null,
+        null,
         {
           title: "Current Time",
           option: () => {
@@ -63,14 +79,100 @@ export default function Page() {
             }, []);
 
             return (
-              <p>
+              <p className="min-w-fit line-clamp-2">
                 {time.toLocaleString("de-DE", {
                   timeZone: "Europe/Berlin",
                 })}
-                , Europe/Germany
+                <br />
+                Europe/Germany
               </p>
             );
           },
+        },
+        {
+          title: "Current Version",
+          option: () => <p>N/A</p>,
+        },
+        null,
+        null,
+        null,
+        { title: "System Information", disabled: true },
+        {
+          title: "Processor",
+          option: () => (
+            <p className="line-clamp-2">
+              AMD™ Ryzen™ 9 5900X
+              <br />
+              12 Cores / 24 Threads
+            </p>
+          ),
+        },
+        {
+          title: "System Memory",
+          option: () => <p>63.9 GB DDR4 @ 2933 MT/s</p>,
+        },
+        {
+          title: "System Graphics",
+          option: () => <p>Nvidia™ GeForce™ RTX 3090 24GB</p>,
+        },
+        null,
+        null,
+        {
+          title: "Network Information",
+          disabled: true,
+        },
+        {
+          title: "Gateway",
+          option: () => <p>opnsense.catcoo.net</p>,
+        },
+        {
+          title: "System Hostname",
+          option: () => <p>catstation.catcoo.net</p>,
+        },
+        null,
+        null,
+        { title: "Attached Storage", disabled: true },
+        {
+          title: "M.2-0: Samsung SSD 990 PRO NVMe",
+          option: () => <p>1.20 TB free / 1.81 TB total</p>,
+        },
+        {
+          title: "M.2-1: WD Black SN770 NVMe",
+          option: () => <p>320 GB free / 465 GB total</p>,
+        },
+        {
+          title: "M.2-2: Samsung SSD 980 EVO",
+          option: () => <p>334 GB free / 931 GB total</p>,
+        },
+        {
+          title: "SATA-0: SanDisk PLUS SSD",
+          option: () => <p>89 GB free / 476 GB total</p>,
+        },
+        {
+          title: "SATA-1: ASUS BW-16D1HT",
+          option: () => <p>BluRay 4K Disk Drive (modified)</p>,
+        },
+        {
+          title: "LAN-0: \\\\truenas.catcoo.net\\chongus",
+          option: () => <p>8.85 TB free / 14.4 TB total</p>,
+        },
+        null,
+        null,
+        { title: "Attached HID", disabled: true },
+        {
+          title: "HID-0: Keyboard",
+          option: () => <p>Keychron K2</p>,
+        },
+        {
+          title: "HID-1: Mouse",
+          option: () => <p>Logitech MX Master 3S</p>,
+        },
+        null,
+        null,
+        {
+          title: "Access Level",
+          disabled: true,
+          option: () => <p>Administrator</p>,
         },
       ]}
     </Split>

@@ -13,6 +13,10 @@ const pages = [
     title: "Projects",
   },
   {
+    id: "occupation",
+    title: "Occupation",
+  },
+  {
     id: "contact",
     title: "Contact",
   },
