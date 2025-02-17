@@ -17,8 +17,12 @@ const pages = [
     title: "Occupation",
   },
   {
-    id: "skills",
-    title: "Skills",
+    id: "interests",
+    title: "Interests",
+  },
+  {
+    id: "engineering",
+    title: "Engineering",
   },
   {
     id: "signatures",

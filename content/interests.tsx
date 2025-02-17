@@ -1,4 +1,4 @@
-type ContentSkill = {
+type ContentInterest = {
   id: string;
   title: string;
   description: React.ReactNode;
@@ -7,7 +7,7 @@ type ContentSkill = {
   icon: string;
 };
 
-const skills = [
+const interests = [
   {
     id: "engineering",
     title: "Engineering",
@@ -75,7 +75,7 @@ const skills = [
       <p>
         Around this time I got into <b>programming</b>. I started writing{" "}
         <b>simple webpages</b> using <b>HTML, CSS, PHP and JS</b>,{" "}
-        <b>Arduino programs</b> with my friend, and skillually picked up{" "}
+        <b>Arduino programs</b> with my friend, and interestually picked up{" "}
         <b>Java</b> for my first <b>native Android apps</b>.
       </p>
     ),
@@ -119,5 +119,5 @@ const skills = [
     color: "#FFFFFF",
     icon: "hackintoshing",
   },
-] as const satisfies ContentSkill[];
-export const contentSkills = skills as Readonly<ContentSkill[]>;
+] as const satisfies ContentInterest[];
+export const contentInterests = interests as Readonly<ContentInterest[]>;
