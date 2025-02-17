@@ -47,7 +47,9 @@ export default function Page({ children }: { children: React.ReactNode }) {
     if (timeline.current?.scrollLeft !== null)
       timeline.current!.scrollLeft = TIMELINE_LENGTH;
 
-    const width = timeline.current?.clientWidth ?? 0;
+    const width = timeline.current?.clientWidth
+      ? timeline.current.clientWidth - 36
+      : 0;
     const scale =
       width > TIMELINE_LENGTH_DEFAULT
         ? width / TIMELINE_DURATION
