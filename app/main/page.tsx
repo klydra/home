@@ -69,6 +69,7 @@ export default function Page() {
         {
           title: "Current Time",
           option: () => {
+            "use client";
             const [time, setTime] = useState<Date>(new Date());
 
             useEffect(() => {
