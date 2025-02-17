@@ -46,6 +46,32 @@ export default function Page({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex flex-col h-full relative">
       {children}
+      <div className="border-b-2 border-primary p-4 flex flex-col">
+        <h2 className="pb-2">Timeline</h2>
+        <div className="flex-grow overflow-x-auto pb-8" ref={timeline}>
+          <div className="min-w-fit">
+            <table
+              className="table-fixed"
+              style={{
+                minWidth: `calc(${TIMELINE_LENGTH}px + 2ch)`,
+                maxWidth: `calc(${TIMELINE_LENGTH}px + 2ch)`,
+              }}
+            >
+              <tbody>
+                {TIMELINE_LAYERS.map((layer) => (
+                  <TimelineRow
+                    key={layer}
+                    layer={layer}
+                    selectedIndex={selectedIndex}
+                    setSelectedIndex={setSelectedIndex}
+                  />
+                ))}
+                <TimelineHead />
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
       <div className="flex-grow">
         <Split
           flexLeft={2}
@@ -81,32 +107,6 @@ export default function Page({ children }: { children: React.ReactNode }) {
             ),
           }))}
         </Split>
-      </div>
-      <div className="border-t-2 border-primary p-4 flex flex-col">
-        <h2 className="pb-2">Timeline</h2>
-        <div className="flex-grow overflow-x-auto pb-8" ref={timeline}>
-          <div className="min-w-fit">
-            <table
-              className="table-fixed"
-              style={{
-                minWidth: `calc(${TIMELINE_LENGTH}px + 2ch)`,
-                maxWidth: `calc(${TIMELINE_LENGTH}px + 2ch)`,
-              }}
-            >
-              <tbody>
-                {TIMELINE_LAYERS.map((layer) => (
-                  <TimelineRow
-                    key={layer}
-                    layer={layer}
-                    selectedIndex={selectedIndex}
-                    setSelectedIndex={setSelectedIndex}
-                  />
-                ))}
-                <TimelineHead />
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
     </div>
   );
