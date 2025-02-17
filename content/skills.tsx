@@ -1,13 +1,13 @@
-type ContentEvent = {
+type ContentSkill = {
   id: string;
   title: string;
   description: React.ReactNode;
-  date: Date;
+  time: string;
   color: string;
   icon: string;
 };
 
-const events = [
+const skills = [
   {
     id: "engineering",
     title: "Engineering",
@@ -20,9 +20,9 @@ const events = [
         time haha.
       </p>
     ),
-    date: new Date("2024-09-01"),
+    time: "Late 2024",
     color: "#ff6b00",
-    icon: "autodesk-fusion-360_pixelated.png",
+    icon: "autodesk-fusion-360",
   },
   {
     id: "3d-printing",
@@ -34,9 +34,68 @@ const events = [
         and enjoy using all of the different materials.
       </p>
     ),
-    date: new Date("2022-08-17"),
+    time: "Late 2022",
     color: "#24a543",
-    icon: "bambulab_pixelated.png",
+    icon: "bambulab",
+  },
+  {
+    id: "iot",
+    title: "IoT",
+    description: (
+      <p>
+        I started tinkering with Raspberry Pi&apos;s setting up{" "}
+        <b>various little automations</b>, and getting more{" "}
+        <b>familiar with the command line</b>.
+      </p>
+    ),
+    time: "Mid 2018",
+    color: "#BD0940",
+    icon: "raspberry-pi",
+  },
+  {
+    id: "media-creation",
+    title: "Media Creation",
+    description: (
+      <p>
+        While I stared cutting videos way before I got into coding, I was
+        certainly getting more advanced around this time. Ditching good old{" "}
+        <b>Windows Movie Maker</b> and <b>iMovie</b> for{" "}
+        <b>Adobe Premiere Pro</b> and steadily taking on more advanced and
+        complex projects and visual manipulations.
+      </p>
+    ),
+    time: "Late 2018",
+    icon: "adobe-premiere-pro",
+    color: "#dd80f8",
+  },
+  {
+    id: "programming",
+    title: "Programming",
+    description: (
+      <p>
+        Around this time I got into <b>programming</b>. I started writing{" "}
+        <b>simple webpages</b> using <b>HTML, CSS, PHP and JS</b>,{" "}
+        <b>Arduino programs</b> with my friend, and skillually picked up{" "}
+        <b>Java</b> for my first <b>native Android apps</b>.
+      </p>
+    ),
+    time: "Mid 2017",
+    icon: "vscode",
+    color: "#40ABF2",
+  },
+  {
+    id: "virtualization",
+    title: "Virtualization",
+    description: (
+      <p>
+        Starting early, I&apos;ve begun <b>setting up many virtual machines</b>{" "}
+        using <b>various configurations and patches</b> for diverse operating
+        systems on plenty of <b>hosts and hypervisors</b>.
+      </p>
+    ),
+    time: "Early 2016",
+    color: "#F38B00",
+    icon: "esxi",
   },
   {
     id: "hackintoshing",
@@ -56,68 +115,9 @@ const events = [
         <b>general architectural and software knowledge</b>.
       </p>
     ),
-    date: new Date("2015-04-12"),
+    time: "Early 2015",
     color: "#FFFFFF",
-    icon: "hackintoshing_pixelated.png",
+    icon: "hackintoshing",
   },
-  {
-    id: "iot",
-    title: "IoT",
-    description: (
-      <p>
-        I started tinkering with Raspberry Pi&apos;s setting up{" "}
-        <b>various little automations</b>, and getting more{" "}
-        <b>familiar with the command line</b>.
-      </p>
-    ),
-    date: new Date("2017-08-15"),
-    color: "#BD0940",
-    icon: "raspberry-pi_pixelated.png",
-  },
-  {
-    id: "media-creation",
-    title: "Media Creation",
-    description: (
-      <p>
-        While I stared cutting videos way before I got into coding, I was
-        certainly getting more advanced around this time. Ditching good old{" "}
-        <b>Windows Movie Maker</b> and <b>iMovie</b> for{" "}
-        <b>Adobe Premiere Pro</b> and steadily taking on more advanced and
-        complex projects and visual manipulations.
-      </p>
-    ),
-    date: new Date("2018-07-16"),
-    icon: "adobe-premiere-pro_pixelated.png",
-    color: "#dd80f8",
-  },
-  {
-    id: "virtualization",
-    title: "Virtualization",
-    description: (
-      <p>
-        Starting early, I’ve begun <b>setting up many virtual machines</b> using{" "}
-        <b>various configurations and patches</b> for diverse operating systems
-        on plenty of <b>hosts and hypervisors</b>.
-      </p>
-    ),
-    date: new Date("2016-02-16"),
-    color: "#F38B00",
-    icon: "esxi_pixelated.png",
-  },
-  {
-    id: "programming",
-    title: "Programming",
-    description: (
-      <p>
-        Around this time I got into <b>programming</b>. I started writing{" "}
-        <b>simple webpages</b> using <b>HTML, CSS, PHP and JS</b>,{" "}
-        <b>Arduino programs</b> with my friend, and eventually picked up{" "}
-        <b>Java</b> for my first <b>native Android apps</b>.
-      </p>
-    ),
-    date: new Date("2017-05-16"),
-    icon: "vscode_pixelated.png",
-    color: "#40ABF2",
-  },
-] as const satisfies ContentEvent[];
-export const contentEvents = events as Readonly<ContentEvent[]>;
+] as const satisfies ContentSkill[];
+export const contentSkills = skills as Readonly<ContentSkill[]>;
