@@ -22,7 +22,6 @@ export default function Page() {
             ),
         },
         null,
-        null,
         ...signatures.map((signature) => {
           return {
             title: signature.name,
