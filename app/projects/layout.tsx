@@ -71,13 +71,16 @@ export default function Page({ children }: { children: React.ReactNode }) {
                   className="mt-10"
                   limit={6}
                 />
-                <p className="mt-8">
-                  Press <span className="text-highlight">[Enter]</span> or{" "}
-                  <span className="text-highlight">[Click]</span> to see more...
-                </p>
+                <button
+                  className="mt-8"
+                  onClick={() => router.push(`/projects/${project.id}`)}
+                >
+                  <b>
+                    <b>Press Here</b> to see more!
+                  </b>
+                </button>
               </div>
             ),
-            onSelect: () => router.push(`/projects/${project.id}`),
           }))}
         </Split>
       </div>
@@ -120,8 +123,6 @@ function TimelineRow({
   selectedIndex: number;
   setSelectedIndex: (index: number) => void;
 }) {
-  const router = useRouter();
-
   return (
     <tr>
       <td className="flex flex-row items-center justify">
@@ -144,7 +145,6 @@ function TimelineRow({
                   aria-disabled={true}
                   tabIndex={undefined}
                   onMouseOver={() => setSelectedIndex(project.index)}
-                  onClick={() => router.push(`/projects/${project.id}`)}
                   key={project.id}
                   className="absolute flex flex-row items-center h-6 focus:text-highlight hover:text-highlight"
                   style={{
