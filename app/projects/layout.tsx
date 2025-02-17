@@ -3,7 +3,7 @@
 import { Split } from "@/components/split";
 import { contentProjects } from "@/content/projects";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ProjectTechnologies } from "./[project]/page";
 
 const TIMELINE_START = new Date("2017-06-01");
@@ -31,11 +31,20 @@ export default function Page({ children }: { children: React.ReactNode }) {
     if (index !== -1) return setSelectedIndex(index);
   }, [params.project]);
 
+  const timeline = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (timeline.current?.scrollLeft !== null)
+      timeline.current!.scrollLeft = window.innerWidth;
+  }, [timeline]);
+
   return (
     <div className="flex flex-col h-full relative">
       {children}
-      <div className="flex-[2]">
+      <div className="flex-grow">
         <Split
+          flexLeft={2}
+          flexRight={3}
           selectedIndex={selectedIndex}
           setSelectedIndex={setSelectedIndex}
           disabled={typeof params.project === "string"}
@@ -55,6 +64,7 @@ export default function Page({ children }: { children: React.ReactNode }) {
                 <ProjectTechnologies
                   technologies={project.technologies}
                   className="mt-10"
+                  limit={5}
                 />
                 <p className="mt-8">
                   Press <span className="text-highlight">[Enter]</span> or{" "}
@@ -66,9 +76,9 @@ export default function Page({ children }: { children: React.ReactNode }) {
           }))}
         </Split>
       </div>
-      <div className="flex-1 border-t-2 border-primary p-4 flex flex-col">
+      <div className="border-t-2 border-primary p-4 flex flex-col">
         <h2 className="pb-2">Timeline</h2>
-        <div className="flex-grow overflow-x-auto">
+        <div className="flex-grow overflow-x-auto pb-8" ref={timeline}>
           <div className="min-w-fit">
             <table
               className="table-fixed"
@@ -124,17 +134,10 @@ function TimelineRow({
                 (+(project.end || TIMELINE_END) - +project.start!) *
                 TIMELINE_SCALE_PX;
 
-              const ref = useRef<HTMLButtonElement>(null);
-
-              useEffect(() => {
-                if (project.selected) ref.current?.scrollIntoView();
-              }, [project.selected]);
-
               return (
                 <button
                   aria-disabled={true}
                   tabIndex={undefined}
-                  ref={ref}
                   onMouseOver={() => setSelectedIndex(project.index)}
                   onClick={() => router.push(`/projects/${project.id}`)}
                   key={project.id}
