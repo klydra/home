@@ -29,7 +29,7 @@ export function HorizontalMovementProvider() {
           break;
       }
     }
-    window.addEventListener("keydown", updateSelected), false;
+    window.addEventListener("keydown", updateSelected);
     return () => window.removeEventListener("keydown", updateSelected);
   }, [page]);
 

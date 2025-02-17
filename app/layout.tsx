@@ -2,8 +2,6 @@ import { Banner } from "@/components/banner";
 import { HorizontalMovementProvider } from "@/components/horizontal-movement";
 import "./globals.css";
 
-export const SCALE_CH_PX = 16;
-
 export default function RootLayout({
   children,
 }: Readonly<{

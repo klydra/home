@@ -1,11 +1,11 @@
 "use client";
 
-import { SCALE_CH_PX } from "@/app/layout";
 import { contentPages } from "@/content/pages";
 import { usePathname, useRouter } from "next/navigation";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
+const BANNER_SCALE_CH_PX = 16;
 const BANNER_CHAR_DURATION_SECONDS = 2;
 const BANNER_TEXT = "klydra.dev";
 
@@ -23,7 +23,7 @@ export function Banner() {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  const chars = width ? Math.ceil(width / SCALE_CH_PX) : 0;
+  const chars = width ? Math.ceil(width / BANNER_SCALE_CH_PX) : 0;
   const offsets = useMemo(
     () => Array.from({ length: chars }, (_, i) => i),
     [chars]
@@ -43,7 +43,7 @@ export function Banner() {
                 key={offset}
                 className="h-full flex flex-col justify-center items-center"
                 style={{
-                  width: `${SCALE_CH_PX}px`,
+                  width: `${BANNER_SCALE_CH_PX}px`,
                   animation: "banner",
                   animationDelay: `${offset}s`,
                   animationDuration: "5s",

@@ -61,7 +61,7 @@ export function Split({
           break;
       }
     }
-    window.addEventListener("keydown", updateSelected), false;
+    window.addEventListener("keydown", updateSelected);
     return () => window.removeEventListener("keydown", updateSelected);
   }, [selectedIndex]);
 

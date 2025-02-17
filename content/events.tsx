@@ -15,9 +15,9 @@ const events = [
       <p>
         While I was always a tinkerer, even far before I got into programming,
         as one of my best friends moved to my city and started a engineering
-        major, we've been working on far more ambitious projects before. It's
-        definitely my second passion, and a good balance for my screen time
-        haha.
+        major, we&apos;ve been working on far more ambitious projects before.
+        It&apos;s definitely my second passion, and a good balance for my screen
+        time haha.
       </p>
     ),
     date: new Date("2024-09-01"),
@@ -43,7 +43,7 @@ const events = [
     title: "Hackintoshing",
     description: (
       <p>
-        I've been{" "}
+        I&apos;ve been{" "}
         <b>
           <u>
             <a href="https://wikipedia.org/wiki/Hackintosh">Hackintoshing</a>
@@ -65,7 +65,7 @@ const events = [
     title: "IoT",
     description: (
       <p>
-        I started tinkering with Raspberry Pi's setting up{" "}
+        I started tinkering with Raspberry Pi&apos;s setting up{" "}
         <b>various little automations</b>, and getting more{" "}
         <b>familiar with the command line</b>.
       </p>

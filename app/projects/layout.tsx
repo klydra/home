@@ -1,10 +1,10 @@
 "use client";
 
+import { ProjectTechnologies } from "@/components/project-techonologies";
 import { Split } from "@/components/split";
 import { contentProjects } from "@/content/projects";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { ProjectTechnologies } from "./[project]/page";
 
 const TIMELINE_START = new Date("2017-06-01");
 const TIMELINE_NOW = new Date();

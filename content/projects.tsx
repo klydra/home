@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-key */
+
 import React from "react";
 import { ContentTechnologyID } from "./technologies";
 
@@ -36,8 +38,8 @@ const projects = [
           </b>{" "}
           I built for the{" "}
           <b>
-            <a href="https://lingemann-gymnasium.de/">local school</a> I'm going
-            to
+            <a href="https://lingemann-gymnasium.de/">local school</a> I&apos;m
+            going to
           </b>
           , which provides the <b>1.1k+ users</b> with a{" "}
           <b>personalized Push Notification</b> leading to a more user-friendly
@@ -223,7 +225,7 @@ const projects = [
     description: (
       <p>
         United Massively Multiplayer Online is a <b>game / social platform</b>{" "}
-        I've been working on by myself as of now.
+        I&apos;ve been working on by myself as of now.
         <br />
         <br />
         The whole experience is based around the main lobby in the shape of the
@@ -341,8 +343,8 @@ const projects = [
             <a href="/project/lgh-mobile">LGH Mobile</a>
           </b>
         </u>
-        , but since the feature got <b>discontinued</b>, I'm not using it in any
-        projects currently.
+        , but since the feature got <b>discontinued</b>, I&apos;m not using it
+        in any projects currently.
       </p>
     ),
     features: null,
@@ -434,7 +436,7 @@ const projects = [
         </p>
         <p>
           This project was the final of many projects, we sadly{" "}
-          <b>weren't quite able to finish</b> due to{" "}
+          <b>weren&apos;t quite able to finish</b> due to{" "}
           <b>unexpected cancellations</b> of sessions.
         </p>
       </>

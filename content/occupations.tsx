@@ -44,8 +44,8 @@ const occupations = [
     description: (
       <>
         Worked with a fixed team and influential outside collaborators like Rémi
-        Arnaud to fix YUR's core ML tracking Android service. Primary focus was
-        on reverse-engineering the continuously updated Meta Quest Operating
+        Arnaud to fix YUR&apos;s core ML tracking Android service. Primary focus
+        was on reverse-engineering the continuously updated Meta Quest Operating
         System Builds and finding memory offsets to read normally unaccessible
         sensor data from.
       </>
