@@ -44,7 +44,7 @@ export default function Page() {
         </button>
 
         <div className="h-full w-full overflow-auto p-8">
-          <div className="max-w-screen-xl">
+          <div className="max-w-screen-xl mx-auto">
             <div className="w-1/3 flex flex-col items-end gap-16 top-0 right-0 ml-10 mb-10 float-right max-h-fit">
               <img
                 className="max-w-80"
