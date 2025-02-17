@@ -40,7 +40,7 @@ export default function Page({ children }: { children: React.ReactNode }) {
 
   useLayoutEffect(() => {
     if (timeline.current?.scrollLeft !== null)
-      timeline.current!.scrollLeft = window.innerWidth;
+      timeline.current!.scrollLeft = TIMELINE_LENGTH;
   }, [timeline]);
 
   return (
