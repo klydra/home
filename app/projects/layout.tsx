@@ -45,10 +45,10 @@ export default function Page({ children }: { children: React.ReactNode }) {
   });
 
   useLayoutEffect(() => {
-    if (timeline.current?.scrollLeft !== null)
-      timeline.current!.scrollLeft = TIMELINE_LENGTH;
-
     function updateSize() {
+      if (timeline.current?.scrollLeft !== null)
+        timeline.current!.scrollLeft = TIMELINE_LENGTH;
+
       const width = timeline.current?.clientWidth
         ? timeline.current.clientWidth - 36
         : 0;
