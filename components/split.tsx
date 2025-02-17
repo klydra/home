@@ -75,7 +75,7 @@ export function Split({
                 tabIndex={disabled ? undefined : index}
               >
                 <td className="p-2">{option.title}</td>
-                <td className="p-2">{option.option}</td>
+                {option.option && <td className="p-2">{option.option}</td>}
               </tr>
             ))}
           </tbody>

@@ -6,7 +6,7 @@ type ContentTechnology = {
   icon?: string;
 };
 
-export const contentTechnologies = [
+const technologies = [
   {
     id: "turso",
     title: "Turso",
@@ -52,7 +52,7 @@ export const contentTechnologies = [
   {
     id: "greenfoot",
     title: "Greenfoot",
-    color: "#808080",
+    color: "#598333",
     link: "https://greenfoot.org/",
   },
   {
@@ -273,16 +273,11 @@ export const contentTechnologies = [
     link: "https://developers.google.com/protocol-buffers",
   },
   {
+    icon: "protobuf",
     id: "grpc",
     title: "gRPC",
     color: "#F2F3F5",
     link: "https://developers.google.com/protocol-buffers",
-  },
-  {
-    id: "grpc",
-    title: "gRPC",
-    color: "#4264FA",
-    link: "https://grpc.io/",
   },
   {
     id: "kubernetes",
@@ -301,6 +296,9 @@ export const contentTechnologies = [
     title: "Next.js",
     link: "https://nextjs.org/",
   },
-] as const satisfies ContentTechnology[] as Readonly<ContentTechnology[]>;
+] as const satisfies ContentTechnology[];
+export const contentTechnologies = technologies as Readonly<
+  ContentTechnology[]
+>;
 
-export type ContentTechnologyID = (typeof contentTechnologies)[number]["id"];
+export type ContentTechnologyID = (typeof technologies)[number]["id"];

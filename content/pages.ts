@@ -3,7 +3,7 @@ type ContentPage = {
   title: string;
 };
 
-export const contentPages = [
+const pages = [
   {
     id: "main",
     title: "Main",
@@ -16,4 +16,5 @@ export const contentPages = [
     id: "contact",
     title: "Contact",
   },
-] as const satisfies ContentPage[] as Readonly<ContentPage[]>;
+] as const satisfies ContentPage[];
+export const contentPages = pages as Readonly<ContentPage[]>;

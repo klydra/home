@@ -7,7 +7,7 @@ type ContentEvent = {
   icon: string;
 };
 
-export const contentEvents = [
+const events = [
   {
     id: "engineering",
     title: "Engineering",
@@ -119,4 +119,5 @@ export const contentEvents = [
     icon: "vscode_pixelated.png",
     color: "#40ABF2",
   },
-] as const satisfies ContentEvent[] as Readonly<ContentEvent[]>;
+] as const satisfies ContentEvent[];
+export const contentEvents = events as Readonly<ContentEvent[]>;

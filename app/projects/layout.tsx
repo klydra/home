@@ -4,8 +4,9 @@ import { Split } from "@/components/split";
 import { contentProjects } from "@/content/projects";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { ProjectTechnologies } from "./[project]/page";
 
-const TIMELINE_START = new Date("2016-06-01");
+const TIMELINE_START = new Date("2017-06-01");
 const TIMELINE_END = new Date();
 const TIMELINE_SCALE_PX = 1 / 1000 / 60 / 60 / 24 / 2;
 const TIMELINE_LENGTH =
@@ -50,7 +51,15 @@ export default function Page({ children }: { children: React.ReactNode }) {
                 <h2 className="text-2xl text-highlight pt-8">
                   {project.title}
                 </h2>
-                {project.teaser}
+                <p>{project.teaser || project.description}</p>
+                <ProjectTechnologies
+                  technologies={project.technologies}
+                  className="mt-10"
+                />
+                <p className="mt-8">
+                  Press <span className="text-highlight">[Enter]</span> or{" "}
+                  <span className="text-highlight">[Click]</span> to see more...
+                </p>
               </div>
             ),
             onSelect: () => router.push(`/projects/${project.id}`),
@@ -102,7 +111,7 @@ function TimelineRow({
     <tr>
       <td className="flex flex-row items-center justify">
         [
-        <div className="relative">
+        <div className="relative h-6">
           {contentProjects
             .map((project, index) => ({
               ...project,
@@ -129,7 +138,7 @@ function TimelineRow({
                   onMouseOver={() => setSelectedIndex(project.index)}
                   onClick={() => router.push(`/projects/${project.id}`)}
                   key={project.id}
-                  className="flex flex-row items-center h-6 focus:text-highlight hover:text-highlight"
+                  className="absolute flex flex-row items-center h-6 focus:text-highlight hover:text-highlight"
                   style={{
                     marginLeft: `${
                       (+project.start - +TIMELINE_START) * TIMELINE_SCALE_PX

@@ -1,9 +1,13 @@
 "use client";
 
 import { contentProjects } from "@/content/projects";
-import { contentTechnologies } from "@/content/technologies";
+import {
+  contentTechnologies,
+  ContentTechnologyID,
+} from "@/content/technologies";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { twMerge } from "tailwind-merge";
 
 export default function Page() {
   const router = useRouter();
@@ -50,23 +54,25 @@ export default function Page() {
                 className="max-w-80"
                 src={`/assets/projects/${project.id}.png`}
               />
-              <div className="flex flex-col gap-5">
-                {project.links.map((link, index) => {
-                  return (
-                    <button
-                      key={index}
-                      className="flex flex-row justify-end items-center gap-3 opacity-80 hover:opacity-100 focus:opacity-100"
-                      onClick={() => window.open(link.url, "_blank")}
-                    >
-                      <span style={{ color: link.color }}>{link.title}</span>
-                      <span>{" - "}</span>
-                      <div className="size-6 flex flex-col items-center justify-center">
-                        <img src={`/assets/projects/links/${link.icon}`} />
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
+              {project.links && (
+                <div className="flex flex-col gap-5">
+                  {project.links.map((link, index) => {
+                    return (
+                      <button
+                        key={index}
+                        className="flex flex-row justify-end items-center gap-3 opacity-80 hover:opacity-100 focus:opacity-100"
+                        onClick={() => window.open(link.url, "_blank")}
+                      >
+                        <span style={{ color: link.color }}>{link.title}</span>
+                        <span>{" - "}</span>
+                        <div className="size-6 flex flex-col items-center justify-center">
+                          <img src={`/assets/projects/links/${link.icon}`} />
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
             <div>
@@ -76,59 +82,75 @@ export default function Page() {
                   {project.description}
                 </p>
               </div>
-              <div className="flex flex-col gap-3 mt-14">
-                <h3 className="text-highlight">Features</h3>
-                <div className="flex flex-col gap-2">
-                  {project.features.map((feature, index) => (
-                    <div
-                      className="flex flex-row gap-4 items-center"
-                      key={index}
-                    >
-                      <p className="text-highlight">»</p>
-                      <p className="text-sm">{feature}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="flex flex-col gap-4 mt-14">
-                <h3 className="text-highlight">Technologies</h3>
-                <div className="flex flex-row gap-y-4 gap-x-8 flex-wrap">
-                  {project.technologies.map((name, index) => {
-                    const technology = contentTechnologies.find(
-                      (technology) => technology.id === name
-                    );
-
-                    if (!technology) return null;
-
-                    return (
+              {project.features && (
+                <div className="flex flex-col gap-3 mt-14">
+                  <h3 className="text-highlight">Features</h3>
+                  <div className="flex flex-col gap-2">
+                    {project.features.map((feature, index) => (
                       <div
-                        className="flex flex-row gap-4 items-center opacity-80 hover:opacity-100"
-                        onClick={() => window.open(technology.link, "_blank")}
+                        className="flex flex-row gap-4 items-center"
                         key={index}
                       >
-                        <div className="size-8 flex flex-col items-center justify-center">
-                          <img
-                            src={`/assets/technologies/${
-                              technology.hasOwnProperty("icon")
-                                ? technology.icon
-                                : technology.id
-                            }_pixelated.png`}
-                          />
-                        </div>
-                        <p
-                          style={{ color: technology.color }}
-                          className="text-sm"
-                        >
-                          {technology.title}
-                        </p>
+                        <p className="text-highlight">»</p>
+                        <p className="text-sm">{feature}</p>
                       </div>
-                    );
-                  })}
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
+              <ProjectTechnologies
+                technologies={project.technologies}
+                className="mt-14"
+              />
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+export function ProjectTechnologies({
+  technologies,
+  className,
+}: {
+  technologies: ContentTechnologyID[] | null;
+  className?: string;
+}) {
+  if (!technologies) return null;
+
+  return (
+    <div className={twMerge("flex flex-col gap-4 cursor-pointer", className)}>
+      <h3 className="text-highlight">Technologies</h3>
+      <div className="flex flex-row gap-y-4 gap-x-8 flex-wrap">
+        {technologies?.map((name, index) => {
+          const technology = contentTechnologies.find(
+            (technology) => technology.id === name
+          );
+
+          if (!technology) return null;
+
+          return (
+            <div
+              className="flex flex-row gap-4 items-center opacity-80 hover:opacity-100"
+              onClick={() => window.open(technology.link, "_blank")}
+              key={index}
+            >
+              <div className="size-8 flex flex-col items-center justify-center">
+                <img
+                  src={`/assets/technologies/${
+                    technology.hasOwnProperty("icon")
+                      ? technology.icon
+                      : technology.id
+                  }_pixelated.png`}
+                />
+              </div>
+              <p style={{ color: technology.color }} className="text-sm">
+                {technology.title}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
