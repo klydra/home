@@ -13,7 +13,7 @@ export default function Page() {
     function escape(e: KeyboardEvent) {
       switch (e.key) {
         case "Escape":
-          router.back();
+          router.replace("/projects");
           break;
       }
     }
@@ -38,7 +38,7 @@ export default function Page() {
         <button
           className="absolute top-2 right-2 size-8 bg-secondary border-2 border-primary cursor-pointer hover:text-highlight focus:text-highlight"
           tabIndex={0}
-          onClick={() => router.back()}
+          onClick={() => router.replace("/projects")}
         >
           <p className="pl-0.5 -mt-0.5">x</p>
         </button>
