@@ -67,7 +67,7 @@ export function Split({
 
   return (
     <div className="flex lg:flex-row flex-col h-full">
-      <div className={`flex-[${flexLeft}] p-4`}>
+      <div className="p-4" style={{ flex: flexLeft }}>
         <table className="table-fixed w-full">
           <tbody>
             {children.map((option, i) => {
@@ -112,12 +112,12 @@ export function Split({
       </div>
       <div
         className={twMerge(
-          `flex-[${flexRight}]`,
           selected?.panel
             ? "lg:border-l-2 lg:border-t-0 border-t-2 lg:border-primary p-8"
-            : "lg:w-0 lg:h-auto w-auto h-0 opacity-0 flex-0",
+            : "lg:w-0 lg:h-auto w-auto h-0 opacity-0 !flex-0",
           "transition-all motion-reduce:transition-none"
         )}
+        style={{ flex: flexRight }}
       >
         {selected?.panel instanceof Function ? (
           <selected.panel />
