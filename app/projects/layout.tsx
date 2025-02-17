@@ -17,7 +17,8 @@ const TIMELINE_DURATION = TIMELINE_END.getTime() - TIMELINE_START.getTime();
 
 const TIMELINE_SCALE_PX_MINIMUM = 1 / 1000 / 60 / 60 / 24 / 2;
 const TIMELINE_LENGTH_DEFAULT = TIMELINE_DURATION * TIMELINE_SCALE_PX_MINIMUM;
-const TIMELINE_RENDER_WIDTH = window.innerWidth - 88;
+const TIMELINE_RENDER_WIDTH =
+  (typeof window === "object" ? window.innerWidth : 0) - 88;
 const TIMELINE_SCALE_PX =
   TIMELINE_RENDER_WIDTH > TIMELINE_LENGTH_DEFAULT
     ? TIMELINE_RENDER_WIDTH / TIMELINE_DURATION
@@ -163,11 +164,11 @@ function TimelineRow({
                     backgroundColor: project.color,
                   }}
                 >
-                  {project.selected && <span className="pl-1">{"["}</span>}
+                  {project.selected && <p className="pl-1">{"["}</p>}
                   <div className="flex-grow h-full overflow-hidden text-center mx-4">
                     <span className="max-w-full">{project.title}</span>
                   </div>
-                  {project.selected && <span>{"]"}</span>}
+                  {project.selected && <p className="ml-auto">{"]"}</p>}
                 </button>
               );
             })}
