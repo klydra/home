@@ -114,10 +114,10 @@ export function Split({
         className={twMerge(
           selected?.panel
             ? "lg:border-l-2 lg:border-t-0 border-t-2 lg:border-primary p-8"
-            : "lg:w-0 lg:h-auto w-auto h-0 opacity-0 !flex-0",
+            : "lg:w-0 lg:h-auto w-auto h-0 opacity-0",
           "transition-all motion-reduce:transition-none"
         )}
-        style={{ flex: flexRight }}
+        style={{ flex: selected?.panel ? flexRight : 0 }}
       >
         {selected?.panel instanceof Function ? (
           <selected.panel />
