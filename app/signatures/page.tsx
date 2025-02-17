@@ -14,7 +14,7 @@ export default function Page() {
     <Split>
       {[
         {
-          title: "Sign on GitHub",
+          title: "Sign here on GitHub",
           onSelect: () =>
             window.open(
               "https://github.com/klydra/home/blob/main/content/signatures.csv",
