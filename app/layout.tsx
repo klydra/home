@@ -12,6 +12,7 @@ export default function RootLayout({
       <head>
         <title>klydra.dev</title>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <meta name="darkreader-lock" />
       </head>
       <body className="font-command antialiased flex flex-col h-screen duration-200">
         <header>
