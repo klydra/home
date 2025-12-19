@@ -1,7 +1,12 @@
+"use client";
+import { useState } from "react";
+
 const IMAGE_COUNT = 41;
+const IMAGE_STEPS = 2;
+const IMAGES = Array.from({ length: IMAGE_COUNT }, (_, i) => IMAGE_COUNT - i);
 
 export default function Page() {
-  const images = Array.from({ length: IMAGE_COUNT }, (_, i) => IMAGE_COUNT - i);
+  const [loaded, setLoaded] = useState<number>(0);
 
   return (
     <div className="h-full w-full p-3 flex flex-col gap-3">
@@ -37,12 +42,19 @@ export default function Page() {
           climbing 🥲
         </ListItem>
       </ul>
-      {images.map((image) => (
+      {IMAGES.slice(
+        0,
+        Math.min(
+          Math.ceil((loaded + 0.5) / IMAGE_STEPS) * IMAGE_STEPS,
+          IMAGE_COUNT
+        )
+      ).map((image) => (
         <img
           key={image}
           src={`/assets/engineering/kart/kart-${image}.webp`}
           className="w-full"
           alt=""
+          onLoad={() => setLoaded((loaded) => loaded + 1)}
         />
       ))}
     </div>
